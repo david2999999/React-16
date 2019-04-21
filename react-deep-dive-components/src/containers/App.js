@@ -4,7 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-    constructor(props) {
+    constructor(props) {    // constructor method only runs one time during component initialization
         super(props);
         console.log('[App.js] constructor');
         this.state = {
@@ -19,12 +19,25 @@ class App extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
+        // this lifecycle always runs, after constructor and any update to the component
         console.log('[App.js] getDerivedStateFromProps', props);
         return state;
     }
 
-    componentDidMount() {
+    componentDidMount() {   // this lifecycle runs once after render completes
         console.log('[App.js] componentDidMount');
+    }
+
+    shouldComponentUpdate() {
+        // this lifecycle runs when there are changes to the component (before the render)
+        // returns true or false depending if the component should update
+        console.log('[App.js] shouldComponentUpdate');
+        return true;
+    }
+
+    componentDidUpdate() {
+        // this lifecycle runs after the component updates (After the render)
+        console.log('[App.js] componentDidUpdate');
     }
 
     nameChangedHandler = (event, id) => {
