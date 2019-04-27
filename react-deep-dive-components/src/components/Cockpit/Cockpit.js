@@ -5,7 +5,13 @@ const cockpit = (props) => {
     useEffect(() => {
        console.log('[Cockpit.js] useEffect');
        // Http request
-    });
+        setTimeout(() => {
+            alert('Saved Data to Cloud.');
+        }, 1000);
+    }, [props.persons]); // passing in [] means the useEffect will only run once.
+
+    // you can use useEffect more than once in components.
+    // useEffect();
 
     let buttonClass = '';
     if (props.showPersons) {
