@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Cockpit.module.css';
 
 const cockpit = (props) => {
+    useEffect(() => {
+       console.log('[Cockpit.js] useEffect');
+       // Http request
+    });
+
     let buttonClass = '';
     if (props.showPersons) {
         buttonClass = styles.Red;
