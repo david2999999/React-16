@@ -2,16 +2,28 @@ import React, { useEffect } from 'react';
 import styles from './Cockpit.module.css';
 
 const cockpit = (props) => {
+
+    // By default, it runs both after the first render and after every update
     useEffect(() => {
-       console.log('[Cockpit.js] useEffect');
-       // Http request
-        setTimeout(() => {
+        console.log('[Cockpit.js] useEffect');
+        setTimeout(() => {       // Http request
             alert('Saved Data to Cloud.');
         }, 1000);
+
+        return () => {
+            console.log('[Cockpit.js] cleanup work in useEffect');
+        };
     }, [props.persons]); // passing in [] means the useEffect will only run once.
 
     // you can use useEffect more than once in components.
     // useEffect();
+    useEffect(() => {
+       console.log('[Cockpit.js] Second useEffect');
+
+        return () => {
+            console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+        };
+    });
 
     let buttonClass = '';
     if (props.showPersons) {
