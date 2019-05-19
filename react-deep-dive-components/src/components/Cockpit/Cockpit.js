@@ -6,11 +6,12 @@ const cockpit = (props) => {
     // By default, it runs both after the first render and after every update
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        setTimeout(() => {       // Http request
+        const timer = setTimeout(() => {       // Http request
             alert('Saved Data to Cloud.');
         }, 1000);
 
         return () => {
+            clearTimeout(timer);
             console.log('[Cockpit.js] cleanup work in useEffect');
         };
     }, [props.persons]); // passing in [] means the useEffect will only run once.
