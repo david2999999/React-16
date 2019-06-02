@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styles from '../App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 class App extends Component {
     constructor(props) {    // constructor method only runs one time during component initialization
@@ -85,7 +86,7 @@ class App extends Component {
         }
 
         return (
-            <div className={styles.App}>
+            <WithClass classes={styles.App}>
                 <button onClick={() => {
                     this.setState({showCockpit: false});
                 }}>Remove Cockpit</button>
@@ -100,7 +101,7 @@ class App extends Component {
                 ) : null}
 
                 {persons}
-            </div>
+            </WithClass>
         );
     }
 }
