@@ -9,13 +9,15 @@ export class Product extends React.Component {
                 </div>
                 <div className='middle aligned content'>
                     <div className='header'>
-                        <div>
+                        <a>
                             <i className='large caret up icon'/>
                             {this.props.votes}
-                        </div>
+                        </a>
                     </div>
                     <div className='description'>
-                        <h3>{this.props.title}</h3>
+                        <a href={this.props.url} style={{fontWeight:'bold'}}>
+                            {this.props.title}
+                        </a>
                         <p>{this.props.description}</p>
                     </div>
                     <div className='extra'>

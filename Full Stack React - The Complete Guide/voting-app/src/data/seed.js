@@ -4,7 +4,7 @@ export const products = [
         title: 'Fort Knight',
         description: 'Authentic Fort Knight Figurine, delivered in just two weeks',
         url: '#',
-        votes: 0,
+        votes: generateVote(),
         submittedAvatarUrl: '/images/avatars/daniel.PNG',
         productImageUrl: '/images/products/image-aqua.jpg'
     },
@@ -13,7 +13,7 @@ export const products = [
         title: 'Mario Figurine',
         description: 'Authentic Mario Figurine, delivered in just two weeks',
         url: '#',
-        votes: 0,
+        votes: generateVote(),
         submittedAvatarUrl: '/images/avatars/avatar.PNG',
         productImageUrl: '/images/products/mario.jpg'
     },
@@ -22,8 +22,12 @@ export const products = [
         title: 'Teemo Figurine',
         description: 'Authentic Teemo Figurine, delivered in just four weeks',
         url: '#',
-        votes: 0,
+        votes: generateVote(),
         submittedAvatarUrl: '/images/avatars/developer.png',
         productImageUrl: '/images/products/teemo.png'
     }
 ];
+
+function generateVote() {
+    return Math.floor(Math.random() * 100);
+}
