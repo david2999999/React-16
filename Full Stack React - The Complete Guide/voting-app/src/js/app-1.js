@@ -4,7 +4,9 @@ import {products} from "../data/seed";
 
 export class ProductList extends React.Component {
     render() {
-        const productComponents = products.map((product) => (
+        const sortedProducts = products.sort((a, b) => b.votes - a.votes);
+
+        const productComponents = sortedProducts.map((product) => (
             <Product
                 id={product.id}
                 title={product.title}
