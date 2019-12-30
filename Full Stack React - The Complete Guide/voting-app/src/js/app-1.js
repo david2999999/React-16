@@ -31,7 +31,7 @@ export class ProductList extends React.Component {
         this.setState({
             products: nextProducts
         });
-    }
+    };
 
     render() {
         const sortedProducts = this.state.products.sort((a, b) => b.votes - a.votes);
