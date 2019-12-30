@@ -3,12 +3,26 @@ import {Product} from "./app-2";
 import {products} from "../data/seed";
 
 export class ProductList extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            products: []
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            products: products
+        });
+    }
+
     handleProductUpvote(productId) {
         console.log(productId + ' was upvoted');
     }
 
     render() {
-        const sortedProducts = products.sort((a, b) => b.votes - a.votes);
+        const sortedProducts = this.state.products.sort((a, b) => b.votes - a.votes);
 
         const productComponents = sortedProducts.map((product) => (
             <Product
