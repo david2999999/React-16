@@ -12,6 +12,7 @@ export class ProductList extends React.Component {
 
         const productComponents = sortedProducts.map((product) => (
             <Product
+                key={'product-' + product.id}
                 id={product.id}
                 title={product.title}
                 description={product.description}
