@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 
 class Person extends Component {
     render() {
-        console.log('[Person.js] rendering...');
+        console.log('[Person.components] rendering...');
 
         return (
                 <Fragment>

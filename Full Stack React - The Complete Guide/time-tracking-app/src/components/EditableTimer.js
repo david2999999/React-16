@@ -1,4 +1,5 @@
 import React from 'react';
+import { TimerForm } from "./TimerForm";
 
 export class EditableTimer extends React.Component {
     render() {

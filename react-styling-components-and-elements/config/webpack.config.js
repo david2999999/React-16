@@ -151,12 +151,12 @@ module.exports = function(webpackEnv) {
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
       filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
-        : isEnvDevelopment && 'static/js/bundle.js',
+        ? 'static/components/[name].[contenthash:8].components'
+        : isEnvDevelopment && 'static/components/bundle.components',
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].chunk.js'
-        : isEnvDevelopment && 'static/js/[name].chunk.js',
+        ? 'static/components/[name].[contenthash:8].chunk.components'
+        : isEnvDevelopment && 'static/components/[name].chunk.components',
       // We inferred the "public path" (such as / or /my-project) from homepage.
       // We use "/" in development.
       publicPath: publicPath,
@@ -249,7 +249,7 @@ module.exports = function(webpackEnv) {
       // if there are any conflicts. This matches Node resolution mechanism.
       // https://github.com/facebook/create-react-app/issues/253
       modules: ['node_modules'].concat(
-        // It is guaranteed to exist because we tweak it in `env.js`
+        // It is guaranteed to exist because we tweak it in `env.components`
         process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
       ),
       // These are the reasonable defaults supported by the Node ecosystem.
@@ -452,7 +452,7 @@ module.exports = function(webpackEnv) {
             // that fall through the other loaders.
             {
               loader: require.resolve('file-loader'),
-              // Exclude `js` files to keep "css" loader working as it injects
+              // Exclude `components` files to keep "css" loader working as it injects
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
@@ -510,7 +510,7 @@ module.exports = function(webpackEnv) {
       // the requesting resource.
       new ModuleNotFoundPlugin(paths.appPath),
       // Makes some environment variables available to the JS code, for example:
-      // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
+      // if (process.env.NODE_ENV === 'production') { ... }. See `./env.components`.
       // It is absolutely essential that NODE_ENV is set to production
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
@@ -541,11 +541,11 @@ module.exports = function(webpackEnv) {
         fileName: 'asset-manifest.json',
         publicPath: publicPath,
       }),
-      // Moment.js is an extremely popular library that bundles large locale files
+      // Moment.components is an extremely popular library that bundles large locale files
       // by default due to how Webpack interprets its code. This is a practical
       // solution that requires the user to opt into importing specific locales.
       // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
-      // You can remove this if you don't use Moment.js:
+      // You can remove this if you don't use Moment.components:
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the Webpack build.

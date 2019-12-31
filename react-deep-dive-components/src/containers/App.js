@@ -8,7 +8,7 @@ import withClass from "../hoc/WithClass";
 class App extends Component {
     constructor(props) {    // constructor method only runs one time during component initialization
         super(props);
-        console.log('[App.js] constructor');
+        console.log('[App.components] constructor');
         this.state = {
             persons: [
                 {id: '1123124', name: 'Max', age: 28},
@@ -23,24 +23,24 @@ class App extends Component {
 
     static getDerivedStateFromProps(props, state) {
         // this lifecycle always runs, after constructor and any update to the component
-        console.log('[App.js] getDerivedStateFromProps', props);
+        console.log('[App.components] getDerivedStateFromProps', props);
         return state;
     }
 
     componentDidMount() {   // this lifecycle runs once after render completes
-        console.log('[App.js] componentDidMount');
+        console.log('[App.components] componentDidMount');
     }
 
     shouldComponentUpdate() {
         // this lifecycle runs when there are changes to the component (before the render)
         // returns true or false depending if the component should update
-        console.log('[App.js] shouldComponentUpdate');
+        console.log('[App.components] shouldComponentUpdate');
         return true;
     }
 
     componentDidUpdate() {
         // this lifecycle runs after the component updates (After the render)
-        console.log('[App.js] componentDidUpdate');
+        console.log('[App.components] componentDidUpdate');
     }
 
     nameChangedHandler = (event, id) => {
@@ -75,7 +75,7 @@ class App extends Component {
     };
 
     render() {
-        console.log('[App.js] render');
+        console.log('[App.components] render');
         let persons = null;
 
         if (this.state.showPersons) {
