@@ -1,4 +1,5 @@
 import React from 'react';
+import { EditableTimer } from "./EditableTimer";
 
 export class EditableTimerList extends React.Component {
     render() {
