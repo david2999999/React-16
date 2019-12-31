@@ -19,7 +19,7 @@ export class TimersDashboard extends React.Component {
               project: 'Kitchen Chores',
               id: uuid(),
               elapsed: 1273998,
-              runningSince: null
+              runningSince: Date.now()
           }
       ]
     };
