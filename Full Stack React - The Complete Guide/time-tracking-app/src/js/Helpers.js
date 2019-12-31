@@ -1,3 +1,5 @@
+import uuid from 'react-uuid';
+
 export function renderElapsedString(elapsedTime) {
     let seconds = Math.floor(elapsedTime / 1000);
 
@@ -10,4 +12,12 @@ export function renderElapsedString(elapsedTime) {
     return hours.toString().padStart(2, '0') + ':' +
            minutes.toString().padStart(2, '0') + ':' +
            seconds.toString().padStart(2, '0');
+}
+
+export function newTimer(timer) {
+    return Object.assign({}, timer, {
+        id: uuid(),
+        elapsed: 0,
+        runningSince: null
+    });
 }
