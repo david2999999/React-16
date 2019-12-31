@@ -35,14 +35,14 @@ export class TimerForm extends React.Component {
                         <div className='field'>
                             <label>Title</label>
                             <input type="text"
-                                   value={this.props.title}
+                                   value={this.state.title}
                                    onChange={this.handleTitleChange}
                             />
                         </div>
                         <div className='field'>
                             <label>Project</label>
                             <input type="text"
-                                   value={this.props.project}
+                                   value={this.state.project}
                                     onChange={this.handleProjectChange}
                             />
                         </div>
