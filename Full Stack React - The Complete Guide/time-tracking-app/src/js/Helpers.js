@@ -1,9 +1,7 @@
 import uuid from 'react-uuid';
 
 export function renderElapsedString(elapsedTime, runningSince) {
-    runningSince = runningSince || 0;
-    elapsedTime = elapsedTime + (Date.now() - runningSince);
-    return convertToMMHHSS(elapsedTime);
+    return runningSince ? convertToMMHHSS(elapsedTime + (Date.now() - runningSince)) : convertToMMHHSS(elapsedTime);
 }
 
 function convertToMMHHSS(timeInMilliSecond) {
