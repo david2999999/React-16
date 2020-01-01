@@ -22,7 +22,7 @@ export function startTimer(data) {
 }
 
 export function stopTimer(data) {
-    return fetch('/api/timers/stop', {
+    return fetch(baseURL + '/api/timers/stop', {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
