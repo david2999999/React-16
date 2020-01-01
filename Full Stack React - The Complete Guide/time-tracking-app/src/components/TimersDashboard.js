@@ -2,7 +2,7 @@ import React from 'react';
 import { EditableTimerList } from "./EditableTimerList";
 import { ToggleableTimerForm } from "./ToggleableTimerForm";
 import { newTimer } from "../js/Helpers";
-import { getTimers } from "../js/Client";
+import { getTimers, startTimer } from "../js/Client";
 
 export class TimersDashboard extends React.Component {
     state = {
@@ -83,6 +83,11 @@ export class TimersDashboard extends React.Component {
                     return timer;
                 }
             })
+        });
+
+        startTimer({
+            id: timerId,
+            start: now
         });
     };
 
