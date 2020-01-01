@@ -1,5 +1,5 @@
 export function getTimers(success) {
-   return fetch('http://localhost:3500/timers', {
+   return fetch('http://localhost:3500/api/timers', {
        headers: {
            Accept: 'application/json'
        }
