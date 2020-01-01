@@ -1,11 +1,24 @@
+const baseURL = 'http://localhost:3500';
+
 export function getTimers(success) {
-   return fetch('http://localhost:3500/api/timers', {
+   return fetch(baseURL + '/api/timers', {
        headers: {
            Accept: 'application/json'
        }
    }).then(checkStatus)
-       .then(parseJSON)
-       .then(success)
+     .then(parseJSON)
+     .then(success)
+}
+
+export function startTimer(data) {
+    return fetch(baseURL + '/api/timers/start', {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(checkStatus);
 }
 
 function checkStatus(response) {
