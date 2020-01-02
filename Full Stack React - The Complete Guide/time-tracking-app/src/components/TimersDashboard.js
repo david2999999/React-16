@@ -2,7 +2,8 @@ import React from 'react';
 import { EditableTimerList } from "./EditableTimerList";
 import { ToggleableTimerForm } from "./ToggleableTimerForm";
 import { newTimer } from "../js/Helpers";
-import { getTimers, startTimer, stopTimer, createTimer, updateTimer } from "../js/Client";
+import { getTimers, startTimer, stopTimer,
+    createTimer, updateTimer, deleteTimer } from "../js/Client";
 
 export class TimersDashboard extends React.Component {
     state = {
@@ -72,6 +73,8 @@ export class TimersDashboard extends React.Component {
         this.setState({
             timers: this.state.timers.filter((timer) => timer.id !== timerId)
         });
+
+        deleteTimer({id: timerId})
     };
 
     startTimer = (timerId) => {

@@ -54,6 +54,17 @@ export function updateTimer(data) {
     }).then(checkStatus);
 }
 
+export function deleteTimer(data) {
+    return fetch(baseURL + '/api/timers', {
+        method: 'delete',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(checkStatus);
+}
+
 function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response;
