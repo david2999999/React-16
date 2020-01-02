@@ -15,3 +15,8 @@ This approach enables the declarative API of React: You tell React what state yo
 
 Since “virtual DOM” is more of a pattern than a specific technology, people sometimes say it to mean different things. In React world, the term “virtual DOM” is usually associated with React elements since they are the objects representing the user interface. React, however, also uses internal objects called “fibers” to hold additional information about the component tree. They may also be considered a part of “virtual DOM” implementation in React.
 
+The "classic" jQuery style web development can be problematic in that:
+- Its hard to keep track of changes - it can become difficult keep track of current (and prior) 
+state of the DOM to manipulate it into the form we need
+- It can be slow - modifying the actual-DOM is a costly operation, and modifying the DOM
+on every change can cause poor performance.
