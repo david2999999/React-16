@@ -19,5 +19,12 @@
         "id": "2c43306e-5b44-4ff8-8753-33c35adbd06f",
         "elapsed": 121626095858,
         "runningSince": 1577852029582
+    },
+    {
+        "title": "Learn React",
+        "project": "Life Chores",
+        "id": "bf465f2-edd-fa-42f5-b5820af144b4",
+        "elapsed": 0,
+        "runningSince": 1578005045810
     }
 ]

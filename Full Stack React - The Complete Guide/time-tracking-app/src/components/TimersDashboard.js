@@ -2,7 +2,7 @@ import React from 'react';
 import { EditableTimerList } from "./EditableTimerList";
 import { ToggleableTimerForm } from "./ToggleableTimerForm";
 import { newTimer } from "../js/Helpers";
-import { getTimers, startTimer, stopTimer } from "../js/Client";
+import { getTimers, startTimer, stopTimer, createTimer } from "../js/Client";
 
 export class TimersDashboard extends React.Component {
     state = {
@@ -47,6 +47,8 @@ export class TimersDashboard extends React.Component {
         this.setState({
             timers: this.state.timers.concat(t)
         });
+
+        createTimer(t);
     };
 
     updateTimer = (attrs) => {

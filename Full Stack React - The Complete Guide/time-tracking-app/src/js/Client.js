@@ -32,6 +32,17 @@ export function stopTimer(data) {
     }).then(checkStatus);
 }
 
+export function createTimer(data) {
+    return fetch(baseURL + '/api/timers', {
+        method: 'post',
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(checkStatus);
+}
+
 function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response;
