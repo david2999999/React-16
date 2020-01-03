@@ -1,7 +1,8 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 
-const App = React.createClass({
+const CreateClassApp  = createReactClass({
    render: function() {}
 });
 
-export default App;
+export default CreateClassApp;
