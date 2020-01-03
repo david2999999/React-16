@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-class ChatWindow extends React.Component {
+class ChatMessage extends React.Component {
     static contextTypes = {
         userMap: PropTypes.object
     };
+
+    render() {}
 }
 
-export default ChatWindow;
+export default ChatMessage;
