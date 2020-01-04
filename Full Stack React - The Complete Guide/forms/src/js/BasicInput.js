@@ -2,17 +2,23 @@ import React from 'react';
 
 class BasicInput extends React.Component {
     state = {
+        name: '',
         names: []
     };
 
     onFormSubmit = (evt) => {
-        const name = this.refs.name.value;
-        const names = [...this.state.names, name];
+        const names = [...this.state.names, this.state.name];
         this.setState({
-            names: names
+            names: names,
+            name: ''
         });
-        this.refs.name.value = '';
         evt.preventDefault();
+    };
+
+    onNameChange = (evt) => {
+        this.setState({
+            name: evt.target.value
+        });
     };
 
     render() {
@@ -20,7 +26,9 @@ class BasicInput extends React.Component {
             <div>
                 <h1>Sign Up Sheet</h1>
                 <form onSubmit={this.onFormSubmit}>
-                    <input type="text" placeholder='Name' ref='name'/>
+                    <input type="text" placeholder='Name'
+                           onChange={this.onNameChange}
+                           value={this.state.name}/>
                     <input type="submit"/>
                 </form>
                 <br/>
