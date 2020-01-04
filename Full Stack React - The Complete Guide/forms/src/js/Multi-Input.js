@@ -1,4 +1,5 @@
 import React from 'react';
+import isEmail from 'validator/lib/isEmail';
 
 class MultiInput extends React.Component {
     state = {
@@ -6,19 +7,28 @@ class MultiInput extends React.Component {
             name: '',
             email: ''
         },
+        fieldErrors: {},
         people: []
     };
 
     onFormSubmit = (evt) => {
-        const people = [...this.state.people, this.state.fields];
+        const people = [...this.state.people];
+        const person = this.state.fields;
+        const fieldErrors = this.validate(person);
         this.setState({
-            people,
+            fieldErrors
+        });
+        evt.preventDefault();
+
+        if (Object.keys(fieldErrors).length) return;
+
+        this.setState({
+            people: people.concat(person),
             fields: {
                 name: '',
                 email: ''
             }
         });
-        evt.preventDefault();
     };
 
     onInputChange = (evt) => {
@@ -27,6 +37,14 @@ class MultiInput extends React.Component {
         this.setState({
             fields
         });
+    };
+
+    validate = (person) => {
+        const errors = {};
+        if (!person.name) errors.name = 'Name Required';
+        if (!person.email) errors.email = 'Email Required';
+        if (person.email && !isEmail(person.email)) errors.email = 'Invalid Email';
+        return errors;
     };
 
     render() {
@@ -38,10 +56,18 @@ class MultiInput extends React.Component {
                            placeholder='Name'
                            onChange={this.onInputChange}
                            value={this.state.fields.name}/>
+                    <span style={{ color: 'red' }}>
+                        { this.state.fieldErrors.name }
+                    </span>
+
                     <input type="text" name='email'
                            placeholder='Email'
                            value={this.state.fields.email}
                            onChange={this.onInputChange}/>
+                    <span style={{ color: 'red' }}>
+                        { this.state.fieldErrors.email }
+                    </span>
+
                     <input type="submit"/>
                 </form>
                 <br/>
@@ -54,7 +80,7 @@ class MultiInput extends React.Component {
                     </ul>
                 </div>
             </div>
-        )
+        );
     }
 }
 
