@@ -15,9 +15,14 @@ class Container extends React.Component {
     };
 
     render() {
+        const childrenArray = React.Children.toArray(this.props.children);
+
         return (
             <div className='container'>
                 { React.Children.map(this.props.children, this.renderChild) }
+                { childrenArray.sort((a, b) =>
+                    a.id < b.id)
+                }
             </div>
         )
     }
