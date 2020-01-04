@@ -10,7 +10,15 @@ class MultiInput extends React.Component {
     };
 
     onFormSubmit = (evt) => {
-
+        const people = [...this.state.people, this.state.fields];
+        this.setState({
+            people,
+            fields: {
+                name: '',
+                email: ''
+            }
+        });
+        evt.preventDefault();
     };
 
     onInputChange = (evt) => {
