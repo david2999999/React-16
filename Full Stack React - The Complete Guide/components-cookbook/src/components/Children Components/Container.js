@@ -1,6 +1,13 @@
 import React from 'react';
 
 class Container extends React.Component {
+    static propTypes = {
+        children: PropTypes.oneOf([
+          PropTypes.element,
+          PropTypes.array
+        ])
+    };
+
     render() {
         return (
             <div className='container'>
