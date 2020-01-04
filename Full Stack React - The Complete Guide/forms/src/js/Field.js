@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Field extends React.Component {
-    static PropTypes = {
+    static propTypes = {
         placeholder: PropTypes.string,
         name: PropTypes.string.isRequired,
         value: PropTypes.string,
