@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import '../node_modules/semantic-ui-css/semantic.min.css';
-import App from "./js/App";
+import BasicInput from "./js/BasicInput";
 
 ReactDOM.render(
-    <App/>,
+    <BasicInput/>,
     document.getElementById('content')
 );

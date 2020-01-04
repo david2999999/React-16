@@ -1,6 +1,6 @@
 import React from 'react';
 
-class App extends React.Component {
+class BasicButton extends React.Component {
     onGreatClick = (evt) => {
         console.log('The user clicked button-1: great', evt);
     };
@@ -33,4 +33,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default BasicButton;
