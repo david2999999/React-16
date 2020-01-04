@@ -14,7 +14,11 @@ class MultiInput extends React.Component {
     };
 
     onInputChange = (evt) => {
-
+        const fields = this.state.fields;
+        fields[evt.target.name] = evt.target.value;
+        this.setState({
+            fields
+        });
     };
 
     render() {
