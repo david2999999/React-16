@@ -2,16 +2,22 @@ import React from 'react';
 
 class Container extends React.Component {
     static propTypes = {
-        children: PropTypes.oneOf([
-          PropTypes.element,
-          PropTypes.array
-        ])
+        component: PropTypes.element.isRequired,
+        children: PropTypes.element.isRequired
+    };
+
+    renderChild = (childData, index) => {
+        return React.createElement(
+            this.props.component,
+            {}, // <- child props
+            childData // <- child's children
+        )
     };
 
     render() {
         return (
             <div className='container'>
-                {this.props.children}
+                { React.Children.map(this.props.children, this.renderChild) }
             </div>
         )
     }
