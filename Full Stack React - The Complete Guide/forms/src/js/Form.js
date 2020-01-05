@@ -8,7 +8,20 @@ class Form extends React.Component {
             name: '',
             email: ''
         },
+        fieldErrors: {},
         people: []
+    };
+
+    onInputChange = ({ name, value, error }) => {
+        const fields = this.state.fields;
+        const fieldErrors = this.state.fieldErrors;
+
+        fields[name] = value;
+        fieldErrors[name] = error;
+
+        this.setState({
+            fields, fieldErrors
+        });
     };
 
     render() {
