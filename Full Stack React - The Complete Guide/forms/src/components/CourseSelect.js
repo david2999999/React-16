@@ -15,6 +15,45 @@ class CourseSelect extends React.Component {
         _loading: false
     };
 
+    componentWillReceiveProps(update) {
+        this.setState({
+            department: update.department,
+            course: update.course
+        });
+    }
+
+    onSelectDepartment = () => {
+
+    };
+
+    renderDepartmentSelect = () => {
+        return (
+            <select onChange={this.onSelectDepartment}
+                value={this.state.department || ''}
+            >
+                <option value=''>
+                    Which Department?
+                </option>
+                <option value="core">
+                    NodeSchool: Core
+                </option>
+                <option value='electives'>
+                    NodeSchool: Electives
+                </option>
+            </select>
+        )
+    };
+
+
+    render() {
+        return (
+            <div>
+                { this.renderDepartmentSelect() }
+                <br/>
+                { this.renderCourseSelect() }
+            </div>
+        )
+    }
 
 }
 
