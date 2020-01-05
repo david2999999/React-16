@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import '../node_modules/semantic-ui-css/semantic.min.css';
-import Form from "./js/Form";
+import CourseForm from "./js/CourseForm";
 
 ReactDOM.render(
-    <Form/>,
+    <CourseForm/>,
     document.getElementById('content')
 );

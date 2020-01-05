@@ -1,5 +1,5 @@
 import React from 'react';
-import Field from "./Field";
+import Field from "../components/Field";
 import isEmail from 'validator/lib/isEmail';
 
 class Form extends React.Component {

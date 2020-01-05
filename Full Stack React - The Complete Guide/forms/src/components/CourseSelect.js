@@ -26,6 +26,10 @@ class CourseSelect extends React.Component {
 
     };
 
+    onSelectCourse = () => {
+
+    };
+
     renderDepartmentSelect = () => {
         return (
             <select onChange={this.onSelectDepartment}
@@ -44,7 +48,33 @@ class CourseSelect extends React.Component {
         )
     };
 
+    renderCourseSelect = () => {
+        if (this.state._loading) {
+            return <img src="/images/loading.gif" alt="loading"/>
+        }
 
+        if (!this.state.department || !this.state.courses.length) return <span/>;
+
+        return (
+            <select onChange={this.onSelectCourse}
+                    value={this.state.course || ''}>
+                {
+                    [
+                        <option value='' key='course-none'>
+                            Which Course?
+                        </option>,
+
+                        ...this.state.courses.map((course, index) => (
+                            <option value={course} key={index}>
+                                { course }
+                            </option>
+                        ))
+                    ]
+                }
+            </select>
+        );
+    };
+    
     render() {
         return (
             <div>
