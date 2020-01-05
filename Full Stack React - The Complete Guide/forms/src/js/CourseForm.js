@@ -39,7 +39,9 @@ class CourseForm extends React.Component {
             people: people.concat(person),
             fields: {
                 name: '',
-                email: ''
+                email: '',
+                department: '',
+                course: ''
             }
         });
     };
@@ -53,6 +55,9 @@ class CourseForm extends React.Component {
 
         if (!person.name) return true;
         if (!person.email) return true;
+        if (!person.course) return true;
+        if (!person.department) return true;
+        if (errorMessages.length) return true;
 
         return errorMessages.length;
     }
