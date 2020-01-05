@@ -24,6 +24,36 @@ class Form extends React.Component {
         });
     };
 
+    onFormSubmit = (evt) => {
+        const people = this.state.people;
+        const person = this.state.fields;
+
+        evt.preventDefault();
+
+        if (this.validate()) return;
+
+        this.setState({
+            people: people.concat(person),
+            fields: {
+                name: '',
+                email: ''
+            }
+        });
+    };
+
+    validate() {
+        const person = this.state.fields;
+        const fieldErrors = this.state.fieldErrors;
+        const errorMessages = Object.keys(fieldErrors).filter((k) => {
+            return fieldErrors[k];
+        });
+
+        if (!person.name) return true;
+        if (!person.email) return true;
+
+        return errorMessages.length;
+    }
+
     render() {
         return (
           <div>
@@ -35,6 +65,7 @@ class Form extends React.Component {
                     value={this.state.fields.name}
                     onChange={this.onInputChange}
                     validate={(val) => (val ? false : 'Name Required')}
+                    error={this.state.fieldErrors['name']}
                   />
                   <br/>
                   <Field
@@ -43,6 +74,7 @@ class Form extends React.Component {
                     value={this.state.fields.email}
                     onChange={this.onInputChange}
                     validate={(val) => (isEmail(val) ? false : 'Invalid Email')}
+                    error={this.state.fieldErrors['email']}
                   />
                   <br/>
                   <input type="submit" disabled={this.validate()}/>

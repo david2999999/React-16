@@ -10,40 +10,25 @@ class Field extends React.Component {
         onChange: PropTypes.func.isRequired
     };
 
-    state = {
-        value: this.props.value,
-        error: false
-    };
-
-    componentWillReceiveProps(update) {
-        this.setState({
-            value: update.value
-        });
-    }
-
-    onChange (evt) {
+    onChange = (evt) => {
         const name = this.props.name;
         const value = evt.target.value;
         const error = this.props.validate ? this.props.validate(value) : false;
 
-        this.setState({
-            value, error
-        });
-
         this.props.onChange({
             name, value, error
         });
-    }
+    };
 
     render() {
         return (
             <div>
                 <input type="text"
                        placeholder={this.props.placeholder}
-                       value={this.state.value}
+                       value={this.props.value}
                        onChange={this.onChange}/>
                 <span style={{ color: 'red'}}>
-                    { this.state.error }
+                    { this.props.error }
                 </span>
             </div>
         );
