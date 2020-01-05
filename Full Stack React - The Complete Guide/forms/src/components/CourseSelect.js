@@ -22,8 +22,15 @@ class CourseSelect extends React.Component {
         });
     }
 
-    onSelectDepartment = () => {
+    onSelectDepartment = (evt) => {
+        const department = evt.target.value;
+        const course = null;
 
+        this.setState({department, course});
+        this.props.onChange({name: 'department', value: department});
+        this.props.onChange({name: 'course', value: course});
+
+        if (department) this.fetch(department);
     };
 
     onSelectCourse = () => {
