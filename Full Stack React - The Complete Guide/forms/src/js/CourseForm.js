@@ -8,12 +8,24 @@ class CourseForm extends React.Component {
         fields: {
             name: '',
             email: '',
-            department: '',
-            course: ''
+            department: null,
+            course: null
         },
         fieldErrors: {},
-        people: []
+        people: [],
+        _loading: false,
+        _saveStatus: 'READY'
     };
+
+    componentWillMount() {
+        this.setState({
+            _loading: true
+        });
+
+        apiClient.loadPeople().then((people) => {
+           this.setState({ _loading: false, people: people });
+        });
+    }
 
     onInputChange = ({ name, value, error }) => {
         const fields = this.state.fields;
@@ -108,5 +120,32 @@ class CourseForm extends React.Component {
         );
     }
 }
+
+const apiClient = {
+    loadPeople: function () {
+        return {
+            then: function (cb) {
+                setTimeout(() => {
+                    cb(JSON.parse(localStorage.people || '[]'));
+                }, 1000);
+            },
+        };
+    },
+
+    savePeople: function (people) {
+        const success = !!(this.count++ % 2);
+
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (!success) return reject({ success });
+
+                localStorage.people = JSON.stringify(people);
+                return resolve({ success });
+            }, 1000);
+        });
+    },
+
+    count: 1,
+};
 
 export default CourseForm;
