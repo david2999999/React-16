@@ -85,6 +85,10 @@ class CourseForm extends React.Component {
     }
 
     render() {
+        if (this.state._loading) {
+            return <img alt="loading" src='/images/loading.gif'/>
+        }
+
         return (
             <div>
                 <h1>Sign Up Sheet</h1>
@@ -115,7 +119,20 @@ class CourseForm extends React.Component {
                     />
                     <br/>
 
-                    <input type="submit" disabled={this.validate()}/>
+                    {{
+                        SAVING: <input value='Saving...' type='submit' disabled/>,
+                        SUCCESS: <input value='Saved!' type='submit' disabled/>,
+                        ERROR: <input
+                            value='Save Failed - Retry?'
+                            type='submit'
+                            disabled={this.validate()}
+                        />,
+                        READY: <input
+                            value='Submit'
+                            type='submit'
+                            disabled={this.validate()}
+                        />
+                    }[this.state._saveStatus]}
                 </form>
 
                 <div>
