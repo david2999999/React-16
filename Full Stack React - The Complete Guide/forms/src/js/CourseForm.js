@@ -40,22 +40,32 @@ class CourseForm extends React.Component {
     };
 
     onFormSubmit = (evt) => {
-        const people = this.state.people;
         const person = this.state.fields;
 
         evt.preventDefault();
-
         if (this.validate()) return;
 
-        this.setState({
-            people: people.concat(person),
-            fields: {
-                name: '',
-                email: '',
-                department: '',
-                course: ''
-            }
-        });
+        const people = [...this.state.people, person];
+        this.setState({ _saveStatus: 'SAVING' });
+
+        apiClient.savePeople(people)
+                 .then(() => {
+                     this.setState({
+                         people: people,
+                         fields: {
+                             name: '',
+                             email: '',
+                             course: null,
+                             department: null
+                         },
+                         _saveStatus: 'SUCCESS'
+                     });
+                 }).catch((err) => {
+                    console.log(err);
+                    this.setState({
+                        _saveStatus: 'ERROR'
+                    });
+                 });
     };
 
     validate() {
