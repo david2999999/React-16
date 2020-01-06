@@ -1,7 +1,8 @@
 import { reducer } from './Reducer/Initial-Reducer';
 
 const incrementAction = {
-    type: 'INCREMENT'
+    type: 'INCREMENT',
+    amount: 5
 };
 
 console.log(reducer(0, incrementAction));
@@ -14,3 +15,11 @@ const unknownAction = {
 
 console.log(reducer(5, unknownAction));
 console.log(reducer(8, unknownAction));
+
+const decrementAction = {
+    type: 'DECREMENT',
+    amount: 11
+};
+
+console.log(reducer(100, decrementAction));
+console.log(reducer(9, decrementAction));
