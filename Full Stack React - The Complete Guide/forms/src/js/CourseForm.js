@@ -35,7 +35,7 @@ class CourseForm extends React.Component {
         fieldErrors[name] = error;
 
         this.setState({
-            fields, fieldErrors
+            fields, fieldErrors, _saveStatus: 'READY'
         });
     };
 
