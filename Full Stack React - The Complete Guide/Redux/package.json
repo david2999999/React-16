@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "fullstackreact.com",
   "scripts": {
-    "server": "babel-node app.js",
+    "server": "babel-node app/app-initial-reducer.js",
     "go": "npm run server",
     "start": "npm run server"
   },

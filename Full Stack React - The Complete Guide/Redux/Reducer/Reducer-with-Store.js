@@ -1,4 +1,4 @@
-function createStore(reducer) {
+export function createStore(reducer) {
     let state = 0;
 
     const getState = () => (state);

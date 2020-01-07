@@ -1,4 +1,4 @@
-import { reducer } from './Reducer/Initial-Reducer';
+import { reducer } from '../Reducer/Initial-Reducer';
 
 const incrementAction = {
     type: 'INCREMENT',
