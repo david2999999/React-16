@@ -23,3 +23,13 @@ const stateV2 = store.getState();
 
 console.log(`State v1: [ ${stateV1} ]`);
 console.log(`State v2: [ ${stateV2} ]`);
+
+const deleteMessageAction = {
+    type: 'DELETE_MESSAGE',
+    index: 0
+};
+
+store.dispatch(deleteMessageAction);
+const stateV3 = store.getState();
+
+console.log(`State v3: [ ${stateV3} ]`);
