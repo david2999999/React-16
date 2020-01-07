@@ -1,9 +1,7 @@
 export function createStore(reducer, initialState) {
-    let state = {
-        messages: initialState
-    };
+    let state = initialState;
 
-    const getState = () => (state);
+    const getState = () => (state.messages);
 
     const dispatch = (action) => {
         state = reducer(state, action);
@@ -14,3 +12,4 @@ export function createStore(reducer, initialState) {
         dispatch
     };
 }
+
