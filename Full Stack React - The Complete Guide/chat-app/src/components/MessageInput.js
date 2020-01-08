@@ -15,7 +15,7 @@ class MessageInput extends React.Component {
     handleSubmit = () => {
         store.dispatch({
             type: 'ADD_MESSAGE',
-            message: this.state.value
+            text: this.state.value
         });
 
         this.setState({
