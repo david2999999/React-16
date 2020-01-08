@@ -1,6 +1,6 @@
 import React from 'react';
-import {createStore} from "./store/store";
-import {reducer} from "./store/reducer";
+import { createStore } from "redux";
+import { reducer } from "./store/reducer";
 import MessageInput from "./components/MessageInput";
 import MessageView from "./components/MessageView";
 

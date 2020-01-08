@@ -13,7 +13,7 @@ class MessageView extends React.Component {
         const messages = this.props.messages.map((message, index) => (
             <div className='comment'
                  key={index}
-                 onClick={() => this.handleClick}>
+                 onClick={() => this.handleClick(index)}>
                 {message}
             </div>
         ));
