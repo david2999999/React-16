@@ -2,7 +2,7 @@ export function createStore(reducer, initialState) {
     let state = initialState;
     const listeners = [];
 
-    const getState = () => (state.messages);
+    const getState = () => (state);
 
     const dispatch = (action) => {
         state = reducer(state, action);
