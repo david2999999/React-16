@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStore } from "redux";
-import { reducer } from "./store/reducer";
+import { reducer } from "./store/threadsReducer";
 import { initialState } from "./js/data";
 import Thread from "./components/Thread";
 import ThreadTabs from "./components/TreadTabs";

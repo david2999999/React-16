@@ -1,8 +1,8 @@
 import {createStore} from "../store/store";
-import {reducer} from "../store/reducer";
+import {threadsReducer} from "../store/threadsReducer";
 
 const initialState = { messages: [] };
-const store = createStore(reducer, initialState);
+const store = createStore(threadsReducer, initialState);
 
 const addMessageAction1 = {
     type: 'ADD_MESSAGE',
