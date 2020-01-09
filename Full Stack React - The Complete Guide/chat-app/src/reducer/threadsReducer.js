@@ -1,21 +1,6 @@
 import uuid from 'uuid';
 
-export function reducer(state, action) {
-    return {
-        activeThreadId: activeThreadIdReducer(state.activeThreadId, action),
-        threads: threadsReducer(state.threads, action)
-    }
-}
-
-function activeThreadIdReducer(state, action) {
-    if (action.type === 'OPEN_THREAD') {
-        return action.id;
-    } else {
-        return state;
-    }
-}
-
-function threadsReducer(state, action) {
+export function threadsReducer(state, action) {
     if (action.type === 'ADD_MESSAGE') {
         const newMessage = {
           text: action.text,

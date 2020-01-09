@@ -1,5 +1,5 @@
 import {createStore} from "../store/store";
-import {threadsReducer} from "../store/threadsReducer";
+import {threadsReducer} from "../reducer/threadsReducer";
 
 const initialState = { messages: [] };
 const store = createStore(threadsReducer, initialState);

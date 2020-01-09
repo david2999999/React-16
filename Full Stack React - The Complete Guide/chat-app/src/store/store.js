@@ -1,3 +1,4 @@
+// not used anymore, currently using the store from redux module
 export function createStore(reducer, initialState) {
     let state = initialState;
     const listeners = [];
