@@ -3,8 +3,9 @@ import { createStore } from "redux";
 import { reducer } from "./store/reducer";
 import MessageInput from "./components/MessageInput";
 import MessageView from "./components/MessageView";
+import { initialState } from "./js/data";
 
-const initialState = { messages: [] };
+
 export const store = createStore(reducer, initialState);
 
 class App extends React.Component {
