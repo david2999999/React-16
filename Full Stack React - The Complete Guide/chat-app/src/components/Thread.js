@@ -1,7 +1,7 @@
 import React from 'react';
 import { store } from "../App";
 
-class MessageView extends React.Component {
+class Thread extends React.Component {
     handleClick = (id) => {
         store.dispatch({
             type: 'DELETE_MESSAGE',
@@ -29,4 +29,4 @@ class MessageView extends React.Component {
     }
 }
 
-export default MessageView;
+export default Thread;
