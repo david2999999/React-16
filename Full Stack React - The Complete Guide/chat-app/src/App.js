@@ -22,7 +22,8 @@ class App extends React.Component {
         const tabs = threads.map(t => (
             {
                 title: t.title,
-                active: t.id === activeThreadId
+                active: t.id === activeThreadId,
+                id: t.id
             }
         ));
 
