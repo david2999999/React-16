@@ -27,7 +27,7 @@ class Thread extends React.Component {
                 <div className='ui comments'>
                     { messages }
                 </div>
-                <MessageInput/>
+                <MessageInput threadId={this.props.thread.id}/>
             </div>
 
         )
