@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStore } from "redux";
 import { reducer } from "./store/reducer";
-import Thread from "./components/Thread";
 import { initialState } from "./js/data";
+import Thread from "./components/Thread";
+import ThreadTabs from "./components/TreadTabs";
 
 
 export const store = createStore(reducer, initialState);
@@ -18,8 +19,16 @@ class App extends React.Component {
         const threads = state.threads;
         const activeThread = threads.find((t) => t.id === activeThreadId);
 
+        const tabs = threads.map(t => (
+            {
+                title: t.title,
+                active: t.id === activeThreadId
+            }
+        ));
+
         return (
             <div className='ui segment'>
+                <ThreadTabs tabs={tabs}/>
                 <Thread thread={activeThread}/>
             </div>
         );
