@@ -1,5 +1,6 @@
 import React from 'react';
 import { store } from "../App";
+import MessageInput from "./MessageInput";
 
 class Thread extends React.Component {
     handleClick = (id) => {
@@ -10,7 +11,7 @@ class Thread extends React.Component {
     };
 
     render() {
-        const messages = this.props.messages.map((message, index) => (
+        const messages = this.props.thread.messages.map((message, index) => (
             <div className='comment'
                  key={index}
                  onClick={() => this.handleClick(message.id)}>
@@ -22,9 +23,13 @@ class Thread extends React.Component {
         ));
 
         return (
-            <div className='ui comments'>
-                { messages }
+            <div>
+                <div className='ui comments'>
+                    { messages }
+                </div>
+                <MessageInput/>
             </div>
+
         )
     }
 }
