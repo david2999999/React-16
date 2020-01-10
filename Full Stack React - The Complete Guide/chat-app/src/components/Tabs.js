@@ -5,7 +5,7 @@ export const Tabs = (props) => (
         {
             props.tabs.map((tab, index) => (
               <div key={index}
-                   className={tab.action ? 'active item' : 'item'}
+                   className={tab.active ? 'active item' : 'item'}
                    onClick={() => props.onClick(tab.id)}>
                   { tab.title }
               </div>
