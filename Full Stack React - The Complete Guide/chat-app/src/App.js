@@ -5,8 +5,7 @@ import { initialState } from "./js/data";
 import Thread from "./components/Thread";
 import ThreadTabs from "./components/TreadTabs";
 
-
-export const store = createStore(reducer, initialState);
+export const store = createStore(reducer);
 
 class App extends React.Component {
     componentDidMount() {

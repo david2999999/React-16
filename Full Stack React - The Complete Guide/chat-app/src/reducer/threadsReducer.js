@@ -1,6 +1,17 @@
 import { messagesReducer } from "./messagesReducer";
 
-export function threadsReducer(state, action) {
+export function threadsReducer(state = [
+    {
+        id: '1-fca2',
+        title: 'Buzz Aldrin',
+        messages: messagesReducer(undefined, {})
+    },
+    {
+        id: '2-be91',
+        title: 'Michael Collins',
+        messages: messagesReducer(undefined, {})
+    }
+], action) {
     switch (action.type) {
         case 'ADD_MESSAGE':
         case 'DELETE_MESSAGE': {
