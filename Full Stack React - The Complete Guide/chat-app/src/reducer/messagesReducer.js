@@ -9,6 +9,10 @@ export function messagesReducer(state, action) {
         };
 
         return state.concat(newMessage);
+    } else if (action.type === 'DELETE_MESSAGE') {
+        return state.filter((message) => {
+            return message.id !== action.id
+        })
     } else {
         return state;
     }

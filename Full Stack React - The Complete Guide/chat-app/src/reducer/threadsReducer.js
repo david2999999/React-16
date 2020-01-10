@@ -26,9 +26,7 @@ export function threadsReducer(state, action) {
          const oldThread = state[threadIndex];
          const newThread = {
              ...oldThread,
-             messages: oldThread.messages.filter((m) => (
-                 m.id !== action.id
-             ))
+             messages: messagesReducer(oldThread.messages, action)
          };
 
          return [
