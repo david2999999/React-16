@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Core from '../api/core';
-import Electives from '../api/elective';
-
-const Courses = {
-    core: Core,
-    electives: Electives,
-};
+import apiClient from "../api/apiClient";
 
 class CourseSelect extends React.Component {
     static propTypes = {
@@ -52,7 +46,7 @@ class CourseSelect extends React.Component {
             courses: []
         });
 
-        apiClient(department).then((courses) => {
+        apiClient.getCourses(department).then((courses) => {
             this.setState({
                 _loading: false, courses: courses
             });
@@ -112,16 +106,6 @@ class CourseSelect extends React.Component {
                 { this.renderCourseSelect() }
             </div>
         )
-    }
-}
-
-function apiClient(department) {
-    return {
-        then: function (cb) {
-            setTimeout(() => {
-                cb(Courses[department])
-            }, 1000);
-        }
     }
 }
 

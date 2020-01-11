@@ -20,14 +20,14 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/api/timers', (req, res) => {
+app.get('/data/timers', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         res.setHeader('Cache-Control', 'no-cache');
         res.json(JSON.parse(data));
     });
 });
 
-app.post('/api/timers', (req, res) => {
+app.post('/data/timers', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         const timers = JSON.parse(data);
         const newTimer = {
@@ -45,7 +45,7 @@ app.post('/api/timers', (req, res) => {
     });
 });
 
-app.post('/api/timers/start', (req, res) => {
+app.post('/data/timers/start', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         const timers = JSON.parse(data);
         timers.forEach((timer) => {
@@ -59,7 +59,7 @@ app.post('/api/timers/start', (req, res) => {
     });
 });
 
-app.post('/api/timers/stop', (req, res) => {
+app.post('/data/timers/stop', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         const timers = JSON.parse(data);
         timers.forEach((timer) => {
@@ -75,7 +75,7 @@ app.post('/api/timers/stop', (req, res) => {
     });
 });
 
-app.put('/api/timers', (req, res) => {
+app.put('/data/timers', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         const timers = JSON.parse(data);
         timers.forEach((timer) => {
@@ -90,7 +90,7 @@ app.put('/api/timers', (req, res) => {
     });
 });
 
-app.delete('/api/timers', (req, res) => {
+app.delete('/data/timers', (req, res) => {
     fs.readFile(DATA_FILE, (err, data) => {
         let timers = JSON.parse(data);
         timers = timers.reduce((memo, timer) => {

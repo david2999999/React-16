@@ -1,7 +1,8 @@
 import React from 'react';
-import Field from "../components/Field";
+import Field from "./Field";
 import isEmail from 'validator/lib/isEmail';
-import CourseSelect from "../components/CourseSelect";
+import CourseSelect from "./CourseSelect";
+import apiClient from "../api/apiClient";
 
 class CourseForm extends React.Component {
     state = {
@@ -147,32 +148,5 @@ class CourseForm extends React.Component {
         );
     }
 }
-
-const apiClient = {
-    loadPeople: function () {
-        return {
-            then: function (cb) {
-                setTimeout(() => {
-                    cb(JSON.parse(localStorage.people || '[]'));
-                }, 1000);
-            },
-        };
-    },
-
-    savePeople: function (people) {
-        const success = !!(this.count++ % 2);
-
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (!success) return reject({ success });
-
-                localStorage.people = JSON.stringify(people);
-                return resolve({ success });
-            }, 1000);
-        });
-    },
-
-    count: 1,
-};
 
 export default CourseForm;

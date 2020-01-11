@@ -1,6 +1,6 @@
 import {Thread} from "../Thread";
 import {connect} from 'react-redux';
-import {addMessage, deleteMessage} from "../actions/messageActions";
+import {addMessage, deleteMessage} from "../../actions/messageActions";
 
 const mapStateToThreadProps = (state) => (
     {

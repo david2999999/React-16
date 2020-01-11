@@ -1,6 +1,6 @@
 import { Tabs } from "../generic/Tabs";
 import { connect } from 'react-redux';
-import {openThread} from "../actions/threadActions";
+import {openThread} from "../../actions/threadActions";
 
 const mapStateToTabsProps = (state) => {
     const tabs = state.threads.map(t => (
