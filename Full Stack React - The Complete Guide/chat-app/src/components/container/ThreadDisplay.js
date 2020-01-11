@@ -1,7 +1,7 @@
 import React from 'react';
-import { store } from "../App";
-import TextFieldSubmit from "./generic/TextFieldSubmit";
-import {Thread} from "./Thread";
+import { store } from "../../App";
+import TextFieldSubmit from "../generic/TextFieldSubmit";
+import {Thread} from "../Thread";
 
 class ThreadDisplay extends React.Component {
     componentDidMount() {

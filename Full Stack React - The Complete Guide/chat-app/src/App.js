@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStore } from "redux";
 import { reducer } from "./reducer/reducer";
-import ThreadDisplay from "./components/ThreadDisplay";
-import ThreadTabs from "./components/TreadTabs";
+import ThreadDisplay from "./components/container/ThreadDisplay";
+import ThreadTabs from "./components/container/TreadTabs";
 
 export const store = createStore(reducer);
 
