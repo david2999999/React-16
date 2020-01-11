@@ -1,5 +1,4 @@
 import React from 'react';
-import { store } from "../../App";
 
 class TextFieldSubmit extends React.Component {
     state = {
