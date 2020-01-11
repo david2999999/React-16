@@ -1,4 +1,3 @@
-import React from 'react';
 import { Tabs } from "../generic/Tabs";
 import { connect } from 'react-redux';
 
