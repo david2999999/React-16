@@ -1,8 +1,8 @@
 import React from 'react';
 import { store } from "../App";
-import MessageInput from "./MessageInput";
+import TextFieldSubmit from "./generic/TextFieldSubmit";
 
-class Thread extends React.Component {
+class ThreadDisplay extends React.Component {
     handleClick = (id) => {
         store.dispatch({
             type: 'DELETE_MESSAGE',
@@ -27,11 +27,11 @@ class Thread extends React.Component {
                 <div className='ui comments'>
                     { messages }
                 </div>
-                <MessageInput threadId={this.props.thread.id}/>
+                <TextFieldSubmit threadId={this.props.thread.id}/>
             </div>
 
         )
     }
 }
 
-export default Thread;
+export default ThreadDisplay;

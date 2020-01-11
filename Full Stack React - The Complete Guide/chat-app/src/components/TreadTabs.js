@@ -1,6 +1,6 @@
 import React from 'react';
 import {store} from "../App";
-import { Tabs } from "./Tabs";
+import { Tabs } from "./generic/Tabs";
 
 class ThreadTabs extends React.Component {
     componentDidMount() {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { store } from "../App";
+import { store } from "../../App";
 
-class MessageInput extends React.Component {
+class TextFieldSubmit extends React.Component {
     state = {
         value: ''
     };
@@ -19,6 +19,7 @@ class MessageInput extends React.Component {
             threadId: this.props.threadId
         });
 
+        this.props.onSubmit(this.state.value);
         this.setState({
             value: ''
         });
@@ -42,4 +43,4 @@ class MessageInput extends React.Component {
     }
 }
 
-export default MessageInput;
+export default TextFieldSubmit;

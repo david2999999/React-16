@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStore } from "redux";
 import { reducer } from "./reducer/reducer";
-import Thread from "./components/Thread";
+import ThreadDisplay from "./components/ThreadDisplay";
 import ThreadTabs from "./components/TreadTabs";
 
 export const store = createStore(reducer);
@@ -20,7 +20,7 @@ class App extends React.Component {
         return (
             <div className='ui segment'>
                 <ThreadTabs/>
-                <Thread thread={activeThread}/>
+                <ThreadDisplay thread={activeThread}/>
             </div>
         );
     }
