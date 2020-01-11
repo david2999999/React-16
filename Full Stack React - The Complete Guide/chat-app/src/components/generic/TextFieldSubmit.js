@@ -13,12 +13,6 @@ class TextFieldSubmit extends React.Component {
     };
 
     handleSubmit = () => {
-        store.dispatch({
-            type: 'ADD_MESSAGE',
-            text: this.state.value,
-            threadId: this.props.threadId
-        });
-
         this.props.onSubmit(this.state.value);
         this.setState({
             value: ''
