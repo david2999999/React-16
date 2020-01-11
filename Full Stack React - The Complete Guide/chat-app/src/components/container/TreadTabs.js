@@ -1,5 +1,6 @@
 import { Tabs } from "../generic/Tabs";
 import { connect } from 'react-redux';
+import {openThread} from "../actions/threadActions";
 
 const mapStateToTabsProps = (state) => {
     const tabs = state.threads.map(t => (
@@ -18,10 +19,7 @@ const mapStateToTabsProps = (state) => {
 const mapDispatchToTabsProps = (dispatch) => (
     {
         onClick: (id) => (
-            dispatch({
-                type: 'OPEN_THREAD',
-                id: id
-            })
+            dispatch(openThread(id))
         )
     }
 );

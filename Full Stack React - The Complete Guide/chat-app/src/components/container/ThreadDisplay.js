@@ -1,5 +1,6 @@
 import {Thread} from "../Thread";
 import {connect} from 'react-redux';
+import {addMessage, deleteMessage} from "../actions/messageActions";
 
 const mapStateToThreadProps = (state) => (
     {
@@ -12,10 +13,7 @@ const mapStateToThreadProps = (state) => (
 const mapDispatchToThreadProps = (dispatch) => (
     {
         onMessageClick: (id) => (
-            dispatch({
-                type: 'DELETE_MESSAGE',
-                id: id
-            })
+            dispatch(deleteMessage(id))
         ),
         dispatch: dispatch
     }
@@ -26,11 +24,7 @@ const mergeThreadProps = (stateProps, dispatchProps) => (
         ...stateProps,
         ...dispatchProps,
         onMessageSubmit: (text) => (
-            dispatchProps.dispatch({
-                type: 'ADD_MESSAGE',
-                text: text,
-                threadId: stateProps.thread.id
-            })
+            dispatchProps.dispatch(addMessage(text, stateProps.thread.id))
         )
     }
 );
