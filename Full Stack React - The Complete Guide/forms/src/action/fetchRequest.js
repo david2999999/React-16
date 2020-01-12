@@ -52,7 +52,7 @@ export function savePeople(people) {
         dispatch(savePeopleRequest());
         apiClient.savePeople(people)
             .then((resp) => {
-                dispatch(savePeopleSuccess())
+                dispatch(savePeopleSuccess(people))
             })
             .catch((err) => {
                 dispatch(savePeopleFailure())

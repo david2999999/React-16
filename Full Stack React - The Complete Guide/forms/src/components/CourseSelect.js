@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import apiClient from "../api/apiClient";
+import PropTypes from 'prop-types';
 
 class CourseSelect extends React.Component {
     static propTypes = {

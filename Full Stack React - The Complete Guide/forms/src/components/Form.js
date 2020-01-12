@@ -2,8 +2,9 @@ import React from 'react';
 import Field from "./Field";
 import isEmail from 'validator/lib/isEmail';
 import CourseSelect from "./CourseSelect";
+import PropTypes from 'prop-types';
 
-class CourseForm extends React.Component {
+class Form extends React.Component {
     static propTypes = {
         people: PropTypes.array.isRequired,
         isLoading: PropTypes.bool.isRequired,
@@ -85,6 +86,7 @@ class CourseForm extends React.Component {
                         value={this.state.fields.name}
                         onChange={this.onInputChange}
                         validate={(val) => (val ? false : 'Name Required')}
+                        error={this.state.fieldErrors['name']}
                     />
                     <br/>
                     <Field
@@ -93,6 +95,7 @@ class CourseForm extends React.Component {
                         value={this.state.fields.email}
                         onChange={this.onInputChange}
                         validate={(val) => (isEmail(val) ? false : 'Invalid Email')}
+                        error={this.state.fieldErrors['email']}
                     />
                     <br/>
 
@@ -132,4 +135,4 @@ class CourseForm extends React.Component {
     }
 }
 
-export default CourseForm;
+export default Form;
