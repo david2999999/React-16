@@ -1,26 +1,44 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SelectedFoods from './SelectedFoods';
+import FoodSearch from './FoodSearch';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    selectedFoods: [],
+  };
+
+  render() {
+    return (
+      <div className='App'>
+        <div className='ui text container'>
+          <SelectedFoods
+            foods={this.state.selectedFoods}
+            onFoodClick={
+              (idx) => (
+                this.setState({
+                  selectedFoods: [
+                    ...this.state.selectedFoods.slice(0, idx),
+                    ...this.state.selectedFoods.slice(
+                      idx + 1, this.state.selectedFoods.length
+                    ),
+                  ],
+                })
+              )
+            }
+          />
+          <FoodSearch
+            onFoodClick={
+              (food) => (
+                this.setState({
+                  selectedFoods: this.state.selectedFoods.concat(food),
+                })
+              )
+            }
+          />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
