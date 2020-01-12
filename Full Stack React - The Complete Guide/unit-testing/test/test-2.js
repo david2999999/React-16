@@ -19,3 +19,9 @@ actual = Modash.truncate(string, 19);
 expected = 'there was on catch...';
 
 assertEqual(`truncate(): truncates a string`, actual, expected);
+
+actual = Modash.truncate(string, string.length);
+expected = string;
+
+assertEqual('`truncate()`: no-ops if <= length', actual, expected);
+

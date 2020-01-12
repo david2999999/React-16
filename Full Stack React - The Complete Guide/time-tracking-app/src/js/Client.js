@@ -1,7 +1,7 @@
 const baseURL = 'http://localhost:3500';
 
 export function getTimers(success) {
-   return fetch(baseURL + '/data/timers', {
+   return fetch(baseURL + '/function/timers', {
        headers: {
            Accept: 'application/json'
        }
@@ -11,7 +11,7 @@ export function getTimers(success) {
 }
 
 export function startTimer(data) {
-    return fetch(baseURL + '/data/timers/start', {
+    return fetch(baseURL + '/function/timers/start', {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
@@ -22,7 +22,7 @@ export function startTimer(data) {
 }
 
 export function stopTimer(data) {
-    return fetch(baseURL + '/data/timers/stop', {
+    return fetch(baseURL + '/function/timers/stop', {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
@@ -33,7 +33,7 @@ export function stopTimer(data) {
 }
 
 export function createTimer(data) {
-    return fetch(baseURL + '/data/timers', {
+    return fetch(baseURL + '/function/timers', {
         method: 'post',
         body: JSON.stringify(data),
         headers: {
@@ -44,7 +44,7 @@ export function createTimer(data) {
 }
 
 export function updateTimer(data) {
-    return fetch(baseURL + '/data/timers', {
+    return fetch(baseURL + '/function/timers', {
         method: 'put',
         body: JSON.stringify(data),
         headers: {
@@ -55,7 +55,7 @@ export function updateTimer(data) {
 }
 
 export function deleteTimer(data) {
-    return fetch(baseURL + '/data/timers', {
+    return fetch(baseURL + '/function/timers', {
         method: 'delete',
         body: JSON.stringify(data),
         headers: {
