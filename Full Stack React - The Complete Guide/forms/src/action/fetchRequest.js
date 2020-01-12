@@ -19,7 +19,7 @@ export function fetchPeople() {
     return function(dispatch) {
         dispatch(fetchPeopleRequest());
         apiClient.loadPeople().then((people) => {
-            dispatch(fetchPeopleSuccess())
+            dispatch(fetchPeopleSuccess(people))
         });
     }
 }

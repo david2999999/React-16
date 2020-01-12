@@ -5,27 +5,26 @@ import CourseSelect from "./CourseSelect";
 import apiClient from "../api/apiClient";
 
 class CourseForm extends React.Component {
-    state = {
-        fields: {
-            name: '',
-            email: '',
-            department: null,
-            course: null
-        },
-        fieldErrors: {},
-        people: [],
-        loading: false,
-        saveStatus: 'READY'
+    static propTypes = {
+        people: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        saveStatus: PropTypes.string.isRequired,
+        fields: PropTypes.object,
+        onSubmit: PropTypes.func.isRequired
     };
 
-    componentWillMount() {
-        this.setState({
-            _loading: true
-        });
+    state = {
+        fields: this.props.fields || {
+            name: '',
+            email: '',
+            course: null,
+            department: null
+        },
+        fieldErrors: {}
+    };
 
-        apiClient.loadPeople().then((people) => {
-           this.setState({ _loading: false, people: people });
-        });
+    componentWillReceiveProps(update) {
+        this.setState({ fields: update.fields })
     }
 
     onInputChange = ({ name, value, error }) => {
