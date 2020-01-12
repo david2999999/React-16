@@ -4,18 +4,6 @@ import isEmail from 'validator/lib/isEmail';
 import CourseSelect from "./CourseSelect";
 import apiClient from "../api/apiClient";
 
-const initialState = {
-    people: [],
-    isLoading: false,
-    saveStatus: 'READY',
-    person: {
-        name: '',
-        email: '',
-        course: null,
-        department: null
-    }
-};
-
 class CourseForm extends React.Component {
     state = {
         fields: {
