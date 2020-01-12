@@ -4,6 +4,18 @@ import isEmail from 'validator/lib/isEmail';
 import CourseSelect from "./CourseSelect";
 import apiClient from "../api/apiClient";
 
+const initialState = {
+    people: [],
+    isLoading: false,
+    saveStatus: 'READY',
+    person: {
+        name: '',
+        email: '',
+        course: null,
+        department: null
+    }
+};
+
 class CourseForm extends React.Component {
     state = {
         fields: {
@@ -14,8 +26,8 @@ class CourseForm extends React.Component {
         },
         fieldErrors: {},
         people: [],
-        _loading: false,
-        _saveStatus: 'READY'
+        loading: false,
+        saveStatus: 'READY'
     };
 
     componentWillMount() {
@@ -86,7 +98,7 @@ class CourseForm extends React.Component {
     }
 
     render() {
-        if (this.state._loading) {
+        if (this.state.loading) {
             return <img alt="loading" src='/images/loading.gif'/>
         }
 
@@ -133,7 +145,7 @@ class CourseForm extends React.Component {
                             type='submit'
                             disabled={this.validate()}
                         />
-                    }[this.state._saveStatus]}
+                    }[this.state.saveStatus]}
                 </form>
 
                 <div>
