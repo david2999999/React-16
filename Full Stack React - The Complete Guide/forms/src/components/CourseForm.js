@@ -2,7 +2,6 @@ import React from 'react';
 import Field from "./Field";
 import isEmail from 'validator/lib/isEmail';
 import CourseSelect from "./CourseSelect";
-import apiClient from "../api/apiClient";
 
 class CourseForm extends React.Component {
     static propTypes = {
@@ -35,7 +34,7 @@ class CourseForm extends React.Component {
         fieldErrors[name] = error;
 
         this.setState({
-            fields, fieldErrors, _saveStatus: 'READY'
+            fields, fieldErrors
         });
     };
 
@@ -45,27 +44,10 @@ class CourseForm extends React.Component {
         evt.preventDefault();
         if (this.validate()) return;
 
-        const people = [...this.state.people, person];
-        this.setState({ _saveStatus: 'SAVING' });
-
-        apiClient.savePeople(people)
-                 .then(() => {
-                     this.setState({
-                         people: people,
-                         fields: {
-                             name: '',
-                             email: '',
-                             course: null,
-                             department: null
-                         },
-                         _saveStatus: 'SUCCESS'
-                     });
-                 }).catch((err) => {
-                    console.log(err);
-                    this.setState({
-                        _saveStatus: 'ERROR'
-                    });
-                 });
+        this.props.onSubmit([
+            ...this.props.people,
+            person
+        ]);
     };
 
     validate() {
@@ -85,9 +67,13 @@ class CourseForm extends React.Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (this.props.isLoading) {
             return <img alt="loading" src='/images/loading.gif'/>
         }
+
+        const dirty = Object.keys(this.state.fields).length;
+        let status = this.props.saveStatus;
+        if (status === 'SUCCESS' && dirty) status = 'READY';
 
         return (
             <div>
@@ -99,7 +85,6 @@ class CourseForm extends React.Component {
                         value={this.state.fields.name}
                         onChange={this.onInputChange}
                         validate={(val) => (val ? false : 'Name Required')}
-                        error={this.state.fieldErrors['name']}
                     />
                     <br/>
                     <Field
@@ -108,7 +93,6 @@ class CourseForm extends React.Component {
                         value={this.state.fields.email}
                         onChange={this.onInputChange}
                         validate={(val) => (isEmail(val) ? false : 'Invalid Email')}
-                        error={this.state.fieldErrors['email']}
                     />
                     <br/>
 
@@ -132,13 +116,13 @@ class CourseForm extends React.Component {
                             type='submit'
                             disabled={this.validate()}
                         />
-                    }[this.state.saveStatus]}
+                    }[status]}
                 </form>
 
                 <div>
                     <h3>People</h3>
                     <ul>
-                        { this.state.people.map(({ name, email, department, course }, index) =>
+                        { this.props.people.map(({ name, email, department, course }, index) =>
                             <li key={index}>{[ name, email, department, course ].join(' - ')}</li>
                         )}
                     </ul>
