@@ -28,4 +28,20 @@ describe('Modash', () => {
             )
         });
     });
+
+    describe('camelCase()', () => {
+        it ('camelizes string with spaces', () => {
+            const string = 'customer responded at';
+            expect(
+                Modash.camelCase(string)
+            ).toEqual('customerRespondedAt');
+        });
+
+        it ('camelizes string with underscores', () => {
+            const string = 'customer_responded_at';
+            expect(
+                Modash.camelCase(string)
+            ).toEqual('customerRespondedAt');
+        });
+    });
 });
