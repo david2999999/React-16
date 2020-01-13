@@ -6,7 +6,6 @@
   },
   "private": true,
   "devDependencies": {
-    "babel-cli": "6.22.2",
     "jest-cli": "24.9.0",
     "@babel/preset-react": "^7.7.4"
   }
