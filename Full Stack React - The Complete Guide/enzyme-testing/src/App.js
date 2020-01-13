@@ -25,11 +25,8 @@ class App extends React.Component {
 
   render() {
     const submitDisabled = !this.state.item;
-    return(
-        <div
-            className='ui text container'
-            id='app'
-        >
+    return (
+        <div className='ui text container' id='app'>
           <table className='ui selectable structured large table'>
             <thead>
             <tr>
@@ -37,23 +34,18 @@ class App extends React.Component {
             </tr>
             </thead>
             <tbody>
-            {
-              this.state.items.map((item, idx) => (
-                  <tr
-                      key={idx}
-                  >
-                    <td>{item}</td>
-                  </tr>
-              ))
-            }
+              {
+                this.state.items.map((item, idx) => (
+                    <tr key={idx}>
+                      <td>{item}</td>
+                    </tr>
+                ))
+              }
             </tbody>
             <tfoot>
             <tr>
               <th>
-                <form
-                    className='ui form'
-                    onSubmit={this.addItem}
-                >
+                <form className='ui form' onSubmit={this.addItem}>
                   <div className='field'>
                     <input
                         className='prompt'
@@ -63,11 +55,9 @@ class App extends React.Component {
                         onChange={this.onItemChange}
                     />
                   </div>
-                  <button
-                      className='ui button'
+                  <button className='ui button'
                       type='submit'
-                      disabled={submitDisabled}
-                  >
+                      disabled={submitDisabled}>
                     Add item
                   </button>
                 </form>
