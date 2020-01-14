@@ -20,8 +20,30 @@ describe('App', () => {
 
     expect(
         wrapper.containsMatchingElement(
-            <button>Add item</button>
+            <button>
+              Add item
+            </button>
         )
     ).toBe(true);
-  })
+  });
+
+  it ('should have `input` element', () => {
+    const wrapper = shallow(
+        <App/>
+    );
+
+    expect(
+        wrapper.containsMatchingElement(
+            <input/>
+        )
+    ).toBe(true);
+  });
+
+  it ('`button` should be disabled', () => {
+    const wrapper = shallow(<App/>);
+    const button = wrapper.find('button').first();
+    expect(
+        button.props().disabled
+    ).toBe(true);
+  });
 });
