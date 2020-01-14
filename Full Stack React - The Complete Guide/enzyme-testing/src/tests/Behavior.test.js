@@ -75,6 +75,20 @@ describe('Form', () => {
                     )
                 ).toBe(true);
             });
-        })
+
+            it ('should clear the input field', () => {
+                const input = wrapper.find('input').first();
+                expect(
+                    input.props().value
+                ).toEqual('');
+            });
+
+            it ('should disable `button`', () => {
+                const button = wrapper.find('button').first();
+                expect(
+                    button.props().disabled
+                ).toBe(true);
+            })
+        });
     })
 });
