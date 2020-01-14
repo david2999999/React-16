@@ -53,5 +53,20 @@ describe('Form', () => {
                ).toBe('');
            })
         });
+
+        describe('and then submits the form', () => {
+            beforeEach(()  => {
+                const form = wrapper.find('form').first();
+                form.simulate('submit', {
+                    preventDefault: () => {}
+                });
+            });
+
+            it ('should add the item to state', () => {
+                expect(
+                    wrapper.state().items
+                ).toContain(item);
+            })
+        })
     })
 });
