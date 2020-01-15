@@ -82,6 +82,12 @@ describe('FoodSearch', () => {
                 wrapper.update();
             });
 
+            it ('should set the state property `food`', () => {
+                expect(
+                    wrapper.state().foods
+                ).toEqual(foods);
+            });
+
             describe('then user clicks food item', () => {
                 beforeEach(() => { // simulate user clicking food item
 
