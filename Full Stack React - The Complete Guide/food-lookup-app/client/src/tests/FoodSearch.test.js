@@ -50,12 +50,11 @@ describe('FoodSearch', () => {
             ).toBe(1);
         });
 
-        it ('...todo...', () => {
-           const firstInvocation = Client.search.mock.calls[0];
-           console.log('First invocation: ');
-           console.log(firstInvocation);
-           console.log('All invocations: ');
-           console.log(Client.search.mock.calls);
+        it ('should call `Client.search() with `value`', () => {
+            const invocationArgs = Client.search.mock.calls[0];
+            expect(
+                invocationArgs[0]
+            ).toEqual(value);
         });
 
         describe('and API returns results', () => {
