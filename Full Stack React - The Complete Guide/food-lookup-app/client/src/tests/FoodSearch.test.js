@@ -1,6 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import FoodSearch from "../FoodSearch";
+import Client from '../Client';
+
+jest.mock('../Client');
 
 describe('FoodSearch', () => {
     let wrapper;
@@ -41,6 +44,14 @@ describe('FoodSearch', () => {
             expect(
                 wrapper.find('.remove.icon').length
             ).toBe(1);
+        });
+
+        it ('...todo...', () => {
+           const firstInvocation = Client.search.mock.calls[0];
+           console.log('First invocation: ');
+           console.log(firstInvocation);
+           console.log('All invocations: ');
+           console.log(Client.search.mock.calls);
         });
 
         describe('and API returns results', () => {
