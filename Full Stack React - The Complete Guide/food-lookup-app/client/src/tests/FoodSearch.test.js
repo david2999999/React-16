@@ -94,6 +94,18 @@ describe('FoodSearch', () => {
                ) .toEqual(2);
             });
 
+            it ('should render the description of first food', () => {
+               expect(
+                   wrapper.html()
+               ).toContain(foods[0].description);
+            });
+
+            it ('should render the description of the second food', () => {
+                expect(
+                    wrapper.html()
+                ).toContain(foods[1].description);
+            });
+
             describe('then user clicks food item', () => {
                 beforeEach(() => { // simulate user clicking food item
 
