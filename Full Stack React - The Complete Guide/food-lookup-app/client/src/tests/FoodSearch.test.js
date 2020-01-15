@@ -12,6 +12,10 @@ describe('FoodSearch', () => {
         wrapper = shallow(<FoodSearch/>);
     });
 
+    afterEach(() => {
+        Client.search.mockClear();
+    });
+
     it ('should not display the remove icon', () => {
         expect(
             wrapper.find('.remove.icon').length
