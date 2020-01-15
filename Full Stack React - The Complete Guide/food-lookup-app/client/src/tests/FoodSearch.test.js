@@ -58,8 +58,28 @@ describe('FoodSearch', () => {
         });
 
         describe('and API returns results', () => {
-            beforeEach(() => { // simulate API returning
+            const foods = [
+                {
+                    description: 'Broccolini',
+                    kcal: '100',
+                    protein_g: '11',
+                    fat_g: '21',
+                    carbohydrate_g: '31'
+                },
+                {
+                    description: 'Broccoli rabe',
+                    kcal: '200',
+                    protein_g: '12',
+                    fat_g: '22',
+                    carbohydrate_g: '32'
+                }
+            ];
 
+            beforeEach(() => { // simulate API returning
+                const invocationArgs = Client.search.mock.calls[0];
+                const cb = invocationArgs[1];
+                cb(foods);
+                wrapper.update();
             });
 
             describe('then user clicks food item', () => {
