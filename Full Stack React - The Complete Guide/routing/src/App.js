@@ -1,6 +1,7 @@
 import React from 'react';
 import Atlantic from "./components/Atlantic";
 import Pacific from "./components/Pacific";
+import Route from "./router/Route";
 
 class App extends React.Component {
   render() {
