@@ -1,4 +1,6 @@
 import React from 'react';
+import Atlantic from "./components/Atlantic";
+import Pacific from "./components/Pacific";
 
 class App extends React.Component {
   render() {
@@ -20,6 +22,9 @@ class App extends React.Component {
           </li>
         </ul>
         <hr/>
+
+        <Route path='/atlantic' component={Atlantic} />
+        <Route path='/pacific' component={Pacific} />
       </div>
     )
   }
