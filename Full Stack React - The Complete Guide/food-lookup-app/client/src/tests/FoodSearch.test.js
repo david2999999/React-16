@@ -126,13 +126,27 @@ describe('FoodSearch', () => {
                 });
 
                 describe('then user types more', () => {
-                    beforeEach(() => { // simulate user typing x
+                    const value = 'broccx';
 
+                    beforeEach(() => { // simulate user typing x
+                        const input = wrapper.find('input').first();
+                        input.simulate('change', {
+                            target: { value: value }
+                        });
                     });
 
                     describe('and API returns no results', () => {
                         beforeEach(() => { // simulate API return no results
+                            const secondInvocationArgs = Client.search.mock.calls[1];
+                            const cb = secondInvocationArgs[1];
+                            cb([]);
+                            wrapper.update();
+                        });
 
+                        it ('should set the state property `foods`', () => {
+                           expect(
+                               wrapper.state().foods
+                           ).toEqual([]);
                         });
                     });
                 });
