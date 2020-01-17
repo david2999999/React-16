@@ -4,6 +4,7 @@ import Pacific from "./components/Pacific";
 import Route from "./router/Route";
 import Link from "./router/Link";
 import Router from "./router/Router";
+import BlackSea from "./components/BlackSea";
 
 const App = () => (
     <Router>
@@ -22,11 +23,17 @@ const App = () => (
                         <code>/pacific</code>
                     </Link>
                 </li>
+                <li>
+                    <Link to='/black-sea'>
+                        <code>/black-sea</code>
+                    </Link>
+                </li>
             </ul>
             <hr/>
 
             <Route path='/atlantic' component={Atlantic} />
             <Route path='/pacific' component={Pacific} />
+            <Route path='/black-sea' component={BlackSea}/>
         </div>
     </Router>
 );
