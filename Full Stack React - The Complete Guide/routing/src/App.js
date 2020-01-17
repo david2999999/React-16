@@ -3,9 +3,14 @@ import Atlantic from "./components/Atlantic";
 import Pacific from "./components/Pacific";
 import Route from "./router/Route";
 import Link from "./router/Link";
+import { history } from "./router/Link";
 
 class App extends React.Component {
-  render() {
+    componentDidMount() {
+        history.listen(() => this.forceUpdate());
+    }
+
+    render() {
     return (
       <div className='ui text container'>
         <h2 className='ui dividing header'>
