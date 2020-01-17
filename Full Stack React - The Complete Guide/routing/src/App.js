@@ -2,6 +2,7 @@ import React from 'react';
 import Atlantic from "./components/Atlantic";
 import Pacific from "./components/Pacific";
 import Route from "./router/Route";
+import Link from "./router/Link";
 
 class App extends React.Component {
   render() {
@@ -12,14 +13,14 @@ class App extends React.Component {
         </h2>
         <ul>
           <li>
-            <a href="/atlantic">
-              <code>/atlantic</code>
-            </a>
+              <Link to='/atlantic'>
+                  <code>/atlantic</code>
+              </Link>
           </li>
           <li>
-            <a href="/pacific">
-              <code>/pacific</code>
-            </a>
+            <Link to='/pacific'>
+                <code>/pacific</code>
+            </Link>
           </li>
         </ul>
         <hr/>
