@@ -1,15 +1,19 @@
 import React from "react";
-import createHistory from 'history/createBrowserHistory';
+import PropTypes from 'prop-types';
 
-export const history = createHistory();
-
-const Link = ({ to, children }) => (
+const Link = ({ to, children }, { history }) => (
     <a onClick={(e) => {
         e.preventDefault();
         history.push(to);
-    }}>
+    }}
+    href={to}
+    >
         { children }
     </a>
 );
+
+Link.contextTypes = {
+  history: PropTypes.object
+};
 
 export default Link;
