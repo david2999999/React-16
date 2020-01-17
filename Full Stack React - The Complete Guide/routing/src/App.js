@@ -1,10 +1,12 @@
 import React from 'react';
 import Atlantic from "./components/Atlantic";
 import Pacific from "./components/Pacific";
-import Route from "./router/Route";
-import Link from "./router/Link";
-import Router from "./router/Router";
 import BlackSea from "./components/BlackSea";
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+} from 'react-router-dom';
 
 const App = () => (
     <Router>
