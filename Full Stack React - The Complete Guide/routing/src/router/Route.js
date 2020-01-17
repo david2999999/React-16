@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Route = ({path, component}, { location }) => {
+const Route = ({path, component}, {location}) => {
     const pathname = location.pathname;
     if (pathname.match(path)) {
         return (

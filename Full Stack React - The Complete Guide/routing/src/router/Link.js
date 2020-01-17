@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const Link = ({ to, children }, { history }) => (
+const Link = ({ to, children }, {history}) => (
     <a onClick={(e) => {
         e.preventDefault();
         history.push(to);
     }}
-    href={to}
-    >
+    href={to}>
         { children }
     </a>
 );
