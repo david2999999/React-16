@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import VerticalMenu from "../VerticalMenu";
 import Album from '../Album';
 import { client } from '../../Client';
 
@@ -40,11 +40,8 @@ class AlbumsContainer extends Component {
     } else {
       return (
         <div className='ui two column divided grid'>
-          <div
-            className='ui six wide column'
-            style={{ maxWidth: 250 }}
-          >
-            {/* VerticalMenu will go here */}
+          <div className='ui six wide column' style={{ maxWidth: 250 }}>
+            <VerticalMenu albums={this.state.albums}/>
           </div>
           <div className='ui ten wide column'>
             {
