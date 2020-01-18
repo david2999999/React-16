@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Album from './Album';
-import { client } from '../Client';
+import Album from '../Album';
+import { client } from '../../Client';
 
 const ALBUM_IDS = [
   '23O4F21GDWiGd33tFN3ZgI',

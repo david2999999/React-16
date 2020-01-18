@@ -1,16 +1,15 @@
 import React from 'react';
-
-import TopBar from './components/TopBar';
-import AlbumsContainer from './components/AlbumsContainer';
-
 import './styles/App.css';
+import TopBar from './components/TopBar';
+import AlbumsContainer from './components/container/AlbumsContainer';
+import {Route} from 'react-router-dom';
 
 const App = () => (
   <div className='ui grid'>
     <TopBar />
     <div className='spacer row' />
     <div className='row'>
-      <AlbumsContainer />
+        <Route path='/albums' component={AlbumsContainer}/>
     </div>
   </div>
 );
