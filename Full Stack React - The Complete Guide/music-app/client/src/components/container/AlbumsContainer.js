@@ -43,7 +43,8 @@ class AlbumsContainer extends Component {
       return (
         <div className='ui two column divided grid'>
           <div className='ui six wide column' style={{ maxWidth: 250 }}>
-            <VerticalMenu albums={this.state.albums}/>
+            <VerticalMenu albums={this.state.albums}
+                    albumsPathname={matchPath}/>
           </div>
           <div className='ui ten wide column'>
               <Route path={`${matchPath}/:albumId`}
