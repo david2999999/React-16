@@ -1,11 +1,23 @@
 /* eslint-disable no-constant-condition */
 import React, { Component } from 'react';
-
 import { Redirect } from 'react-router-dom';
-
 import { client } from '../../Client';
 
 class Login extends Component {
+  state = {
+    loginInProgress: false,
+    shouldRedirect: false
+  };
+
+  performLogin() {
+    this.setState({ loginInProgress: true });
+    client.login().then(() => (
+        this.setState({
+          shouldRedirect: true
+        })
+    ));
+  }
+
   render() {
     if ('todo') {
       return (
