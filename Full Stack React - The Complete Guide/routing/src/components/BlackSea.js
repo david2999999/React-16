@@ -1,5 +1,5 @@
 import React from 'react';
-import Redirect from "../router/Redirect";
+import { Redirect } from "react-router-dom";
 
 class BlackSea extends React.Component {
     state = {
