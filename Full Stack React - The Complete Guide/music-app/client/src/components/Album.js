@@ -3,7 +3,7 @@ import '../styles/Album.css';
 import { durationToHuman } from '../Helpers';
 import {Link} from "react-router-dom";
 
-const Album = ({ album }) => (
+const Album = ({ album, albumsPathname }) => (
   <div className='Album'>
     <div className='row'>
       <div className='ui middle aligned three column grid'>
@@ -23,7 +23,7 @@ const Album = ({ album }) => (
               - ${album.tracks.length} songs`
             }
           </p>
-          <Link to='/albums'
+          <Link to={albumsPathname}
                 className='ui left floated large button'>
             Close
           </Link>

@@ -52,7 +52,7 @@ class AlbumsContainer extends Component {
                         a.id === match.params.albumId
                     ));
                     return (
-                        <Album album={album}/>
+                        <Album album={album} albumsPathname={matchPath}/>
                     )
                 }}/>
           </div>
