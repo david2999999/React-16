@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/Album.css';
 import { durationToHuman } from '../Helpers';
+import {Link} from "react-router-dom";
 
 const Album = ({ album }) => (
   <div className='Album'>
@@ -22,11 +23,10 @@ const Album = ({ album }) => (
               - ${album.tracks.length} songs`
             }
           </p>
-          <div
-            className='ui left floated large button'
-          >
+          <Link to='/albums'
+                className='ui left floated large button'>
             Close
-          </div>
+          </Link>
         </div>
       </div>
     </div>

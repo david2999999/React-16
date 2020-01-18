@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom';
 
-import { client } from '../Client';
+import { client } from '../../Client';
 
 class Login extends Component {
   render() {
