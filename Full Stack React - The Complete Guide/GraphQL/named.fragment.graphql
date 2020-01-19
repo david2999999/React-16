@@ -1,0 +1,14 @@
+{
+    firstSearchResult {
+        ... searchPerson
+        ... searchPhoto
+    }
+}
+
+fragment searchPerson on Person {
+    name
+}
+
+fragment searchPhoto on Photo {
+    height
+}
