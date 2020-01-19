@@ -1,0 +1,27 @@
+{
+    hn2 {
+        nodeFromHnId(id: "dhouston", isUserId: true) {
+            ... on HackerNewsV2User {
+                submitted(first: 2) {
+                    pageInfo {
+                        hasNextPage
+                        hasPreviousPage
+                        startCursor
+                        endCursor
+                    }
+
+                    edges {
+                        cursor
+                        node {
+                            id
+                            ... on HackerNewsV2Comment {
+                                text
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
