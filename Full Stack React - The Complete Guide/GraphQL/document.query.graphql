@@ -1,0 +1,8 @@
+query getTopTwoStories {
+    hn {
+        topStories(limit: 2) {
+            title
+            url
+        }
+    }
+}
