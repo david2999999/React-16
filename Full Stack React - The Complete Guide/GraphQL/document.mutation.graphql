@@ -1,7 +1,9 @@
 mutation upvoteStory {
     hn {
-        upvoteStory(id: "11565911")
-        id
-        score
+        upvoteStory(id: "11565911") {
+            id
+            score
+        }
+
     }
 }
