@@ -1,0 +1,19 @@
+interface Searchable {
+    searchResultPreview: String
+}
+
+type Person implements Searchable {
+    searchResultPreview: String
+    name: String
+    age: Int
+}
+
+type Photo implements Searchable {
+    searchResultPreview: String
+    height: Int
+    width: Int
+}
+
+type SearchQuery {
+    firstSearchResult: Searchable
+}
