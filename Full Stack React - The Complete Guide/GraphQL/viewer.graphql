@@ -1,0 +1,16 @@
+{
+    viewer {
+        id
+        messages {
+            participants {
+                id
+                name
+            }
+            unreadCount
+        }
+        channels {
+            name
+            unreadCount
+        }
+    }
+}
