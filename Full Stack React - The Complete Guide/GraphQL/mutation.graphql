@@ -1,0 +1,12 @@
+mutation {
+    keyValue_setValue(input: {
+        clientMutationId: "browser",
+        id: "this-is-a-key",
+        value: "this is a value"
+    }) {
+        item {
+            value
+            id
+        }
+    }
+}
