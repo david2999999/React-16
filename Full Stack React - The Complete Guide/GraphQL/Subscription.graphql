@@ -1,0 +1,13 @@
+input StoryLikeSubscibeInput {
+    storyId: string
+    clientSubscriptionId: string
+}
+
+subscription StoryLikeSubscription($input: StoryLikeSubscibeInput) {
+    storyLikeSubscribe(input: $input) {
+        story {
+            likers { count }
+            likeSentence { text }
+        }
+    }
+}
