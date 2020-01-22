@@ -19,3 +19,34 @@ const createDatabase = () => {
 
     return sequencePromises(promises);
 };
+
+const insertData = () => {
+    let { users, posts, usersFiends } = data;
+
+    let queries = [
+        tables.users.insert(users).toQuery(),
+        tables.posts.insert(posts).toQuery(),
+        tables.usersFriends.insert(usersFiends).toQuery()
+    ];
+
+    let promises = queries.map((query) => {
+        return () => database.getSql(query);
+    });
+
+    return sequencePromises(promises);
+};
+
+createDatabase().then(() => {
+    return insertData();
+}).then(() => {
+    console.log({ done: true });
+});
+
+
+
+
+
+
+
+
+
