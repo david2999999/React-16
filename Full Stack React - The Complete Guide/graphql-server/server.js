@@ -15,6 +15,17 @@ const RootQuery = new GraphQLObjectType({
            resolve() {
                return 'viewer!';
            }
+       },
+       node: {
+           type: GraphQLString,
+           args: {
+               id: {
+                   type: new GraphQLNonNull(GraphQLID)
+               }
+           },
+           resolve(source, args) {
+               return inMemoryStore[args.key];
+           }
        }
    }
 });
