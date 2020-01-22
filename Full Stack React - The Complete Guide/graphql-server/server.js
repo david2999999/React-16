@@ -4,6 +4,7 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLString,
     GraphQLNonNull, GraphQLID } from 'graphql';
 
 const app = express();
+let inMemoryStore = {};
 
 const RootQuery = new GraphQLObjectType({
    name: 'RootQuery',
@@ -18,20 +19,12 @@ const RootQuery = new GraphQLObjectType({
    }
 });
 
-const Schema = new GraphQLSchema({
-    query: RootQuery
-});
-
-app.use('/graphql', graphqlHTTP({ schema: Schema, graphiql: true }));
-
-let inMemoryStore = {};
-
 const RootMutation = new GraphQLObjectType({
    name: 'RootMutation',
    description: 'The root mutation',
    fields: {
        setNode: {
-           type: GraphQLString,
+           type: GraphQLString, // return type
            args: {
                id: {
                    type: new GraphQLNonNull(GraphQLID)
@@ -48,6 +41,12 @@ const RootMutation = new GraphQLObjectType({
    }
 });
 
+const Schema = new GraphQLSchema({
+    query: RootQuery,
+    mutation: RootMutation
+});
+
+app.use('/graphql', graphqlHTTP({ schema: Schema, graphiql: true }));
 
 app.listen(3000, () => {
     console.log({ running: true });
