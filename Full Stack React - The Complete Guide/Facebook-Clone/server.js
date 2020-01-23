@@ -25,15 +25,9 @@ const RootQuery = new GraphQLObjectType({
    }
 });
 
-const RootMutation = new GraphQLObjectType({
-   name: 'RootMutation',
-   description: 'The root mutation'
-});
-
 const Schema = new GraphQLSchema({
     types: [UserType, PostType],
-    query: RootQuery,
-    mutation: RootMutation
+    query: RootQuery
 });
 
 app.use('/graphql', graphqlHTTP({ schema: Schema, graphiql: true }));

@@ -45,7 +45,7 @@ export const UserType = new GraphQLObjectType({
 });
 
 export const PostType = new GraphQLObjectType({
-    name: 'POST',
+    name: 'Post',
     interfaces: [NodeInterface],
     fields: {
         id: {

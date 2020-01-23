@@ -1,2 +1,5 @@
 require('babel-register');
-require('./src/sqlite/seedData');
+require('./server');
+
+// used to create sqlite database and populate date
+// require('./src/sqlite/seedData');

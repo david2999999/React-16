@@ -13,7 +13,7 @@ export const getNodeById = (nodeId) => {
 
     return database.getSql(query).then((rows) => {
         if (rows[0]) {
-            return rows[0].__tableName = tableName;
+            rows[0].__tableName = tableName;
         }
 
         return rows[0];
