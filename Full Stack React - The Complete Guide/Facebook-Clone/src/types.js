@@ -11,5 +11,12 @@ export const NodeInterface = new GraphQLInterfaceType({
         id: {
             type: new GraphQLNonNull(GraphQLID)
         }
+    },
+    resolveType: (source) => {
+        if (source.__tableName === tables.users.getName()) {
+            return UserType;
+        }
+
+        return PostType;
     }
 });
