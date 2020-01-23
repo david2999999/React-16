@@ -21,12 +21,12 @@ const createDatabase = () => {
 };
 
 const insertData = () => {
-    let { users, posts, usersFiends } = data;
+    let { users, posts, usersFriends } = data;
 
     let queries = [
         tables.users.insert(users).toQuery(),
         tables.posts.insert(posts).toQuery(),
-        tables.usersFriends.insert(usersFiends).toQuery()
+        tables.usersFriends.insert(usersFriends).toQuery()
     ];
 
     let promises = queries.map((query) => {

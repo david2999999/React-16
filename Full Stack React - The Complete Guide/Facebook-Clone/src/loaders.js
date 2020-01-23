@@ -19,3 +19,20 @@ export const getNodeById = (nodeId) => {
         return rows[0];
     })
 };
+
+export const getFriendIdsForUser = (userSource) => {
+    const table = tables.usersFriends;
+    const query = table
+        .select(table.user_id_b)
+        .where(table.user_id_a.equals(userSource.id))
+        .toQuery();
+
+    return database.getSql(query).then((rows) => {
+        console.log(rows);
+        rows.forEach((row) => {
+            row.__tableName = tables.users.getName();
+        });
+
+        return rows;
+    });
+};
