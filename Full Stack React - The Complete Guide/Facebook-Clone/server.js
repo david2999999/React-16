@@ -1,7 +1,7 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import * as loaders from './src/loaders';
-import { NodeInterface } from "./src/types";
+import {NodeInterface, PostType, UserType} from "./src/types";
 import { GraphQLSchema, GraphQLObjectType, GraphQLString,
     GraphQLNonNull, GraphQLID } from 'graphql';
 
@@ -31,6 +31,7 @@ const RootMutation = new GraphQLObjectType({
 });
 
 const Schema = new GraphQLSchema({
+    types: [UserType, PostType],
     query: RootQuery,
     mutation: RootMutation
 });
