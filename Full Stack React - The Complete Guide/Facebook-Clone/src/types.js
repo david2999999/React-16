@@ -24,7 +24,7 @@ export const NodeInterface = new GraphQLInterfaceType({
 });
 
 const resolveId = (source) => {
-    return tables.dbIdToNodeId(source.id, source__tableName);
+    return tables.dbIdToNodeId(source.id, source.__tableName);
 };
 
 export const UserType = new GraphQLObjectType({
