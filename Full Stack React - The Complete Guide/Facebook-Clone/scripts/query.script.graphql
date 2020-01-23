@@ -1,0 +1,8 @@
+query {
+    node(id: "users:4") {
+        id
+        ... on User {
+            name
+        }
+    }
+}
