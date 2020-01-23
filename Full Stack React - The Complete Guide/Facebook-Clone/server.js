@@ -1,30 +1,25 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import * as loaders from './src/loaders';
+import { NodeInterface } from "./src/types";
 import { GraphQLSchema, GraphQLObjectType, GraphQLString,
     GraphQLNonNull, GraphQLID } from 'graphql';
 
 const app = express();
-let inMemoryStore = {};
 
 const RootQuery = new GraphQLObjectType({
    name: 'RootQuery',
    description: 'The root Query',
    fields: {
-       viewer: {
-           type: GraphQLString,
-           resolve() {
-               return 'viewer!';
-           }
-       },
        node: {
-           type: GraphQLString,
+           type: NodeInterface,
            args: {
                id: {
                    type: new GraphQLNonNull(GraphQLID)
                }
            },
            resolve(source, args) {
-               return inMemoryStore[args.key];
+               return loaders.getNodeById(args.id);
            }
        }
    }
@@ -32,24 +27,7 @@ const RootQuery = new GraphQLObjectType({
 
 const RootMutation = new GraphQLObjectType({
    name: 'RootMutation',
-   description: 'The root mutation',
-   fields: {
-       setNode: {
-           type: GraphQLString, // return type
-           args: {
-               id: {
-                   type: new GraphQLNonNull(GraphQLID)
-               },
-               value: {
-                   type: new GraphQLNonNull(GraphQLString)
-               }
-           },
-           resolve(source, args) {
-               inMemoryStore[args.key] = args.value;
-               return inMemoryStore[args.key];
-           }
-       }
-   }
+   description: 'The root mutation'
 });
 
 const Schema = new GraphQLSchema({
