@@ -5,7 +5,7 @@ import {
     GraphQLObjectType,
     GraphQLString
 } from 'graphql';
-import * as tables from './tables';
+import * as tables from './sqlite/tables';
 
 export const NodeInterface = new GraphQLInterfaceType({
     name: 'Node',

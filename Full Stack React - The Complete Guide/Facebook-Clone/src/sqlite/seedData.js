@@ -1,4 +1,4 @@
-import * as data from './data/data';
+import * as data from '../data/data';
 import * as tables from './tables'
 import * as database from './database';
 
