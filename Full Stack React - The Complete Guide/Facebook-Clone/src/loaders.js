@@ -37,6 +37,9 @@ export const getFriendIdsForUser = (userSource) => {
     });
 };
 
+// instead of retrieving first the user's information and then retrieving the user's
+// friend list in two separate calls. This function retrieves both the user's information
+// and all of the user's friend list.
 export const getUserNodeWithFriends = (nodeId) => {
   const { tableName, dbId } = tables.splitNodeId(nodeId);
 
@@ -50,7 +53,7 @@ export const getUserNodeWithFriends = (nodeId) => {
       .toQuery();
 
     return database.getSql(query).then((rows) => {
-        if (!rows[0]) {
+        if (!rows[0]) { // if there are no user
             return undefined;
         }
 
