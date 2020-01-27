@@ -37,6 +37,50 @@ export const getFriendIdsForUser = (userSource) => {
     });
 };
 
+export const getPostIdsForUser = (userSource, args) => {
+    let { after, first } = args;
+    if (!first) first = 2;
+
+    const table = tables.posts;
+    let query = table
+        .select(table.id, table.created_at)
+        .where(table.user_id.equals(userSource.id))
+        .order(table.created_at.asc)
+        .limit(first + 1);
+
+    if (after) {
+        const [id, created_at] = after.split(':');
+        query = query
+            .where(table.created_at.gt(after))
+            .where(table.id.gt(id));
+    }
+
+    return database.getSql(query.toQuery()).then((allRows) => {
+        const rows = allRows.slice(0, first);
+
+        rows.forEach((row) => {
+            row.__tableName = tables.posts.getName();
+            row.__cursor = row.id + ":" + row.created_at;
+        });
+
+        const hasNextPage = allRows.length > first;
+        const hasPreviousPage = false;
+
+        const pageInfo = {
+            hasNextPage: hasNextPage,
+            hasPreviousPage: hasPreviousPage
+        };
+
+        if (rows.length > 0) {
+            pageInfo.startCursor = rows[0].__cursor;
+            pageInfo.endCursor = rows[rows.length - 1].__cursor;
+        }
+
+        return {rows, pageInfo};
+    });
+};
+
+
 // instead of retrieving first the user's information and then retrieving the user's
 // friend list in two separate calls. This function retrieves both the user's information
 // and all of the user's friend list.
