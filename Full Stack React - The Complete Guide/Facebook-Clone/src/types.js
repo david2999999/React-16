@@ -28,6 +28,20 @@ const PageInfoType = new GraphQLObjectType({
     }
 });
 
+const PostEdgeType = new GraphQLObjectType({
+    name: 'PostEdge',
+    fields: () => {
+        return {
+            cursor: {
+                type: new GraphQLNonNull(GraphQLString)
+            },
+            node: {
+                type: new GraphQLNonNull(PostType)
+            }
+        }
+    }
+});
+
 export const NodeInterface = new GraphQLInterfaceType({
     name: 'Node',
     fields: {
