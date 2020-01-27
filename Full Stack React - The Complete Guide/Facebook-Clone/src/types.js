@@ -42,6 +42,18 @@ const PostEdgeType = new GraphQLObjectType({
     }
 });
 
+const PostsConnectionType = new GraphQLObjectType({
+    name: 'PostsConnection',
+    fields: {
+        pageInfo: {
+           type: new GraphQLNonNull(PageInfoType)
+        },
+        edges: {
+           type: new GraphQLList(PostEdgeType)
+        }
+    }
+});
+
 export const NodeInterface = new GraphQLInterfaceType({
     name: 'Node',
     fields: {
