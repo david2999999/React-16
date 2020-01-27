@@ -5,7 +5,8 @@ import {
     GraphQLObjectType,
     GraphQLString,
     GraphQLList,
-    GraphQLBoolean
+    GraphQLBoolean,
+    GraphQLInt
 } from 'graphql';
 import * as tables from './sqlite/tables';
 import * as loaders from './loaders';
@@ -115,6 +116,39 @@ export const UserType = new GraphQLObjectType({
                         return Promise.all(promises);
                     })
                 }
+            },
+            posts: {
+                type: PostsConnectionType,
+                args: {
+                    after: {
+                        type: GraphQLString
+                    },
+                    first: {
+                        type: GraphQLInt
+                    }
+                }
+            },
+            resolve(source, args) {
+                return loaders.getPostIdsForUser(source, args).then(({rows, pageInfo}) => {
+                    const promises = rows.map((row) => {
+                        const postNodeId = tables.dbIdToNodeId(row.id, row.__tableName);
+                        return loaders.getNodeById(postNodeId).then((node) => {
+                            const edge = {
+                                node,
+                                cursor: row.__cursor
+                            };
+
+                            return edge;
+                        });
+                    });
+
+                    return Promise.all(promises).then((edges) => {
+                        return {
+                            edges,
+                            pageInfo
+                        }
+                    });
+                })
             }
         }
     }
