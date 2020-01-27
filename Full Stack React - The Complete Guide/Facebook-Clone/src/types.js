@@ -4,10 +4,29 @@ import {
     GraphQLID,
     GraphQLObjectType,
     GraphQLString,
-    GraphQLList
+    GraphQLList,
+    GraphQLBoolean
 } from 'graphql';
 import * as tables from './sqlite/tables';
 import * as loaders from './loaders';
+
+const PageInfoType = new GraphQLObjectType({
+    name: 'PageInfo',
+    fields: {
+        hasNextPage: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        hasPreviousPage: {
+            type: new GraphQLNonNull(GraphQLBoolean)
+        },
+        startCursor: {
+            type: GraphQLString
+        },
+        endCursor: {
+            type: GraphQLString
+        }
+    }
+});
 
 export const NodeInterface = new GraphQLInterfaceType({
     name: 'Node',
