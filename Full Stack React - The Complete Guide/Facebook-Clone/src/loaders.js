@@ -87,6 +87,24 @@ export const getPostIdsForUser = (userSource, args) => {
     });
 };
 
+const getFriendshipLevels = (nodeId) => {
+    const { dbId } = tables.splitNodeId(nodeId);
+
+    const table = tables.usersFriends;
+    let query = table
+        .select(table.star())
+        .where(table.user_id_a.equals(dbId));
+
+    return database.getSql(query.toQuery()).then((rows) => {
+        const levelMap = {};
+        rows.forEach((row) => {
+            levelMap[row.user_id_b] = row.level;
+        });
+
+        return levelMap;
+    })
+};
+
 
 // instead of retrieving first the user's information and then retrieving the user's
 // friend list in two separate calls. This function retrieves both the user's information
