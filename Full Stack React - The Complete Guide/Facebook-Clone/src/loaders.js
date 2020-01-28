@@ -43,10 +43,10 @@ export const getPostIdsForUser = (userSource, args) => {
 
     const table = tables.posts;
     let query = table
-        .select(table.id, table.created_at)
+        .select(table.id, table.created_at, table.level)
         .where(table.user_id.equals(userSource.id))
         .order(table.created_at.asc)
-        .limit(first + 1);
+        .limit(first + 10);
 
     if (after) {
         const [id, created_at] = after.split(':');
@@ -54,6 +54,13 @@ export const getPostIdsForUser = (userSource, args) => {
             .where(table.created_at.gt(after))
             .where(table.id.gt(id));
     }
+
+    return Promise.all([
+        database.getSql(query.toQuery()),
+        getFriendshipLevels(context)
+    ]).then(([ allRows, getFriendshipLevels ]) => {
+
+    });
 
     return database.getSql(query.toQuery()).then((allRows) => {
         const rows = allRows.slice(0, first);
