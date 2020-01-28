@@ -1,4 +1,5 @@
 import express from 'express';
+import basicAuth from 'basic-auth-connect';
 import graphqlHTTP from 'express-graphql';
 import * as loaders from './src/loaders';
 import {NodeInterface, PostType, UserType} from "./src/types";
@@ -52,6 +53,10 @@ const Schema = new GraphQLSchema({
     types: [UserType, PostType],
     query: RootQuery
 });
+
+app.use(basicAuth(function(user, pass) {
+    return user === 'harry' && pass === 'mypassword1';
+}));
 
 app.use('/graphql', graphqlHTTP({ schema: Schema, graphiql: true }));
 
