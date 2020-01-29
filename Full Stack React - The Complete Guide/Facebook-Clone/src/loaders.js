@@ -58,8 +58,10 @@ export const getPostIdsForUser = (userSource, args) => {
     return Promise.all([
         database.getSql(query.toQuery()),
         getFriendshipLevels(context)
-    ]).then(([ allRows, getFriendshipLevels ]) => {
-
+    ]).then(([ allRows, friendshipLevels ]) => {
+        allRows = allRows.filter((row) => {
+            return canAccessLevel(friendshipLevels[userSource.id], row.level);
+        })
     });
 
     return database.getSql(query.toQuery()).then((allRows) => {
@@ -103,6 +105,14 @@ const getFriendshipLevels = (nodeId) => {
 
         return levelMap;
     })
+};
+
+const canAccessLevel = (viewerLevel, contentLevel) => {
+    const levels = ['public', 'acquaintance', 'friend', 'top'];
+    const viewerLevelIndex = levels.indexOf(viewerLevel);
+    const contentLevelIndex = levels.indexOf(contentLevel);
+
+    return viewerLevelIndex >= contentLevelIndex;
 };
 
 
