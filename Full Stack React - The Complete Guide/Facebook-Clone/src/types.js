@@ -11,6 +11,22 @@ import {
 import * as tables from './sqlite/tables';
 import * as loaders from './loaders';
 
+export const NodeInterface = new GraphQLInterfaceType({
+    name: 'Node',
+    fields: {
+        id: {
+            type: new GraphQLNonNull(GraphQLID)
+        }
+    },
+    resolveType: (source) => {
+        if (source.__tableName === tables.users.getName()) {
+            return UserType;
+        }
+
+        return PostType;
+    }
+});
+
 const PageInfoType = new GraphQLObjectType({
     name: 'PageInfo',
     fields: {
@@ -54,26 +70,6 @@ const PostsConnectionType = new GraphQLObjectType({
         }
     }
 });
-
-export const NodeInterface = new GraphQLInterfaceType({
-    name: 'Node',
-    fields: {
-        id: {
-            type: new GraphQLNonNull(GraphQLID)
-        }
-    },
-    resolveType: (source) => {
-        if (source.__tableName === tables.users.getName()) {
-            return UserType;
-        }
-
-        return PostType;
-    }
-});
-
-const resolveId = (source) => {
-    return tables.dbIdToNodeId(source.id, source.__tableName);
-};
 
 export const UserType = new GraphQLObjectType({
     name: 'User',
@@ -152,3 +148,7 @@ export const PostType = new GraphQLObjectType({
         }
     }
 });
+
+const resolveId = (source) => {
+    return tables.dbIdToNodeId(source.id, source.__tableName);
+};

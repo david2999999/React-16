@@ -4,7 +4,7 @@ import graphqlHTTP from 'express-graphql';
 import * as loaders from './src/loaders';
 import {NodeInterface, PostType, UserType} from "./src/types";
 import { GraphQLSchema, GraphQLObjectType, GraphQLString,
-    GraphQLNonNull, GraphQLID } from 'graphql';
+    GraphQLNonNull, GraphQLID, GraphQLEnumType } from 'graphql';
 import {load} from "babel-register/lib/cache";
 
 const app = express();
@@ -34,9 +34,50 @@ const RootQuery = new GraphQLObjectType({
    }
 });
 
+const LevelEnum = new GraphQLEnumType({
+   name: 'PrivacyLevel',
+   values: {
+       PUBLIC: {
+           value: 'public'
+       },
+       ACQUAINTANCE: {
+           value: 'acquaintance'
+       },
+       FRIEND: {
+           value: 'friend'
+       },
+       TOP: {
+           value: 'top'
+       }
+   }
+});
+
+const RootMutation = new GraphQLObjectType({
+   name: 'RootMutation',
+   description: 'The root mutation',
+   fields: {
+       createPost: {
+           type: PostType,
+           args: {
+               body: {
+                   type: new GraphQLNonNull(GraphQLString)
+               },
+               level: {
+                   type: new GraphQLNonNull(LevelEnum)
+               }
+           }
+       },
+       resolve(source, args, context) {
+           return loaders.createPost(args.body, args.level, context).then((nodeId) => {
+               return loaders.getNodeById(nodeId);
+           });
+       }
+   }
+});
+
 const Schema = new GraphQLSchema({
     types: [UserType, PostType],
-    query: RootQuery
+    query: RootQuery, RootMutation
 });
 
 app.use(basicAuth(function(user, pass) {
