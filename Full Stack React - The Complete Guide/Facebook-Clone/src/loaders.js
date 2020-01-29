@@ -20,6 +20,12 @@ const createNodeLoader = (table) => {
     });
 };
 
+const nodeLoaders = {
+    users: createNodeLoader(tables.users),
+    posts: createNodeLoader(tables.posts),
+    usersFriends: createNodeLoader(tables.usersFriends)
+};
+
 export const getNodeById = (nodeId) => {
     const { tableName, dbId } = tables.splitNodeId(nodeId);
 
