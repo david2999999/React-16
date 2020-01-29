@@ -86,24 +86,6 @@ export const UserType = new GraphQLObjectType({
             },
             name: { type: new GraphQLNonNull(GraphQLString) },
             about: { type: new GraphQLNonNull(GraphQLString) },
-            // friends: {
-            //     type: new GraphQLList(GraphQLID),
-            //     resolve(source) {
-            //         // if the source already retrieved the user's friend list along with the
-            //         // user's information already
-            //         if (source.__friends) {
-            //             return source.__friends.map((row) => {
-            //                 return tables.dbIdToNodeId(row.user_id_b, row.__tableName);
-            //             });
-            //         }
-            //
-            //         return loaders.getFriendIdsForUser(source).then((rows) => {
-            //             return rows.map((row) => {
-            //                 return tables.dbIdToNodeId(row.user_id_b, row.__tableName);
-            //             });
-            //         })
-            //     }
-            // }
             friends: {
                 type: new GraphQLList(UserType),
                 resolve(source, args) {

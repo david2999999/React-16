@@ -51,7 +51,7 @@ export const getPostIdsForUser = (userSource, args, context) => {
     if (after) {
         const [id, created_at] = after.split(':');
         query = query
-            .where(table.created_at.gt(after))
+            .where(table.created_at.gt(created_at))
             .where(table.id.gt(id));
     }
 
