@@ -15,6 +15,7 @@
     "express": "4.13.3",
     "express-graphql": "0.5.3",
     "graphql": "0.6.0",
+    "graphql-relay": "^0.6.0",
     "sql": "^0.78.0",
     "sqlite": "3.0.3",
     "sqlite3": "4.1.1"

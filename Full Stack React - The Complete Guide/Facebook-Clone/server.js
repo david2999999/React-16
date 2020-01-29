@@ -5,7 +5,6 @@ import * as loaders from './src/loaders';
 import {NodeInterface, PostType, UserType} from "./src/types";
 import { GraphQLSchema, GraphQLObjectType, GraphQLString,
     GraphQLNonNull, GraphQLID, GraphQLEnumType } from 'graphql';
-import {load} from "babel-register/lib/cache";
 
 const app = express();
 
