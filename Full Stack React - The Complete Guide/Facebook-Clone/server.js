@@ -65,19 +65,20 @@ const RootMutation = new GraphQLObjectType({
                level: {
                    type: new GraphQLNonNull(LevelEnum)
                }
+           },
+           resolve(source, args, context) {
+               return loaders.createPost(args.body, args.level, context).then((nodeId) => {
+                   return loaders.getNodeById(nodeId);
+               });
            }
-       },
-       resolve(source, args, context) {
-           return loaders.createPost(args.body, args.level, context).then((nodeId) => {
-               return loaders.getNodeById(nodeId);
-           });
        }
    }
 });
 
 const Schema = new GraphQLSchema({
     types: [UserType, PostType],
-    query: RootQuery, RootMutation
+    query: RootQuery,
+    mutation: RootMutation
 });
 
 app.use(basicAuth(function(user, pass) {
