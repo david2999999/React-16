@@ -37,7 +37,7 @@ export const getFriendIdsForUser = (userSource) => {
     });
 };
 
-export const getPostIdsForUser = (userSource, args) => {
+export const getPostIdsForUser = (userSource, args, context) => {
     let { after, first } = args;
     if (!first) first = 2;
 
@@ -61,10 +61,8 @@ export const getPostIdsForUser = (userSource, args) => {
     ]).then(([ allRows, friendshipLevels ]) => {
         allRows = allRows.filter((row) => {
             return canAccessLevel(friendshipLevels[userSource.id], row.level);
-        })
-    });
+        });
 
-    return database.getSql(query.toQuery()).then((allRows) => {
         const rows = allRows.slice(0, first);
 
         rows.forEach((row) => {

@@ -106,8 +106,8 @@ export const UserType = new GraphQLObjectType({
             // }
             friends: {
                 type: new GraphQLList(UserType),
-                resolve(source, args, context) {
-                    return loaders.getFriendIdsForUser(source, args, context).then(({rows, pageInfo}) => {
+                resolve(source, args) {
+                    return loaders.getFriendIdsForUser(source, args).then((rows) => {
                         const promises = rows.map((row) => {
                             const friendNodeId = tables.dbIdToNodeId(row.user_id_b, row.__tableName);
                             return loaders.getNodeById(friendNodeId);
@@ -127,8 +127,8 @@ export const UserType = new GraphQLObjectType({
                         type: GraphQLInt
                     }
                 },
-                resolve(source, args) {
-                    return loaders.getPostIdsForUser(source, args).then(({rows, pageInfo}) => {
+                resolve(source, args, context) {
+                    return loaders.getPostIdsForUser(source, args, context).then(({rows, pageInfo}) => {
                         const promises = rows.map((row) => {
                             const postNodeId = tables.dbIdToNodeId(row.id, row.__tableName);
                             return loaders.getNodeById(postNodeId).then((node) => {

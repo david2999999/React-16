@@ -5,6 +5,7 @@ import * as loaders from './src/loaders';
 import {NodeInterface, PostType, UserType} from "./src/types";
 import { GraphQLSchema, GraphQLObjectType, GraphQLString,
     GraphQLNonNull, GraphQLID } from 'graphql';
+import {load} from "babel-register/lib/cache";
 
 const app = express();
 
@@ -17,7 +18,19 @@ const RootQuery = new GraphQLObjectType({
            resolve(source, args, context) {
                return loaders.getNodeById(context);
            }
-       }
+       },
+       node: {
+           type: NodeInterface,
+           args: {
+               id: {
+                   type: new GraphQLNonNull(GraphQLID)
+               }
+           },
+           resolve(source, args) {
+               return loaders.getNodeById(args.id);
+           }
+       },
+
    }
 });
 
@@ -27,7 +40,7 @@ const Schema = new GraphQLSchema({
 });
 
 app.use(basicAuth(function(user, pass) {
-    return user === '1' && pass === 'mypassword1';
+    return user === '5' && pass === 'mypassword1';
 }));
 
 app.use('/graphql', graphqlHTTP((req) => {
