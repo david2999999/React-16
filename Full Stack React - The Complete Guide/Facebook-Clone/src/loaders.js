@@ -1,6 +1,25 @@
 import * as database from './sqlite/database';
 import * as tables from './sqlite/tables';
 
+import DataLoader from 'dataloader';
+
+const createNodeLoader = (table) => {
+    return new DataLoader((ids) => {
+        const query = table
+            .select(table.star())
+            .where(table.id.in(ids))
+            .toQuery();
+
+        return database.getSql(query).then((rows) => {
+            rows.forEach((row) => {
+                row.__tableName = table.getName();
+            });
+
+            return rows;
+        });
+    });
+};
+
 export const getNodeById = (nodeId) => {
     const { tableName, dbId } = tables.splitNodeId(nodeId);
 
