@@ -50,5 +50,5 @@ function findThreadIndex(threads, action) {
     }
 }
 
-// The concat() method is used to merge arrays.
-// Concat does not change the existing arrays, but instead returns a new array.
+// The concat() method is used to merge Arrays.
+// Concat does not change the existing Arrays, but instead returns a new array.

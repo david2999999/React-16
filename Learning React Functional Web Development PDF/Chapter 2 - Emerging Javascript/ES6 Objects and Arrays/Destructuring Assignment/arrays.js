@@ -1,4 +1,4 @@
-// Values can also be destructured from arrays. Imagine that we wanted to assign the
+// Values can also be destructured from Arrays. Imagine that we wanted to assign the
 // first value of an array to a variable name:
 var [firstResort] = ["Kirkwood", "Squaw", "Alpine"];
 
