@@ -2,9 +2,9 @@
 // with multiple exports can take advantage of object destructuring. Modules that
 // use export default are imported into a single variable:
 
-// import { print, log } from './text-helpers';
-// import freel from './mt-freel';
+import { print, log } from './text-helpers';
+import freel from './mt-freel';
 
-// print('printing a message');
-// log('logging a message');
-// freel.print();
+print('printing a message');
+log('logging a message');
+freel.print();
