@@ -42,12 +42,26 @@ class App extends Component {
 
     render() {
         const style = {
-          backgroundColor: 'white',
-          font: 'inherit',
-          border: '1px solid blue',
-          padding: '8px',
-          cursor: 'pointer'
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer',
+            borderRadius: '3px'
         };
+
+        let persons = this.state.showPersons ? (
+            <div>
+                <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
+                <Person name={this.state.persons[1].name}
+                        age={this.state.persons[1].age}
+                        click={this.switchNameHandler.bind(this, 'David Click 2')}
+                        changed={this.nameChangeHandler}>
+                    My Hobbies: Coding
+                </Person>
+                <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+            </div>
+        ) : null;
 
         return (
             <div className='App'>
@@ -56,21 +70,7 @@ class App extends Component {
                         style={style}>
                     Toggle List
                 </button>
-
-
-                { this.state.showPersons ?
-                    <div>
-                        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-                        <Person name={this.state.persons[1].name}
-                                age={this.state.persons[1].age}
-                                click={this.switchNameHandler.bind(this, 'David Click 2')}
-                                changed={this.nameChangeHandler}>
-                            My Hobbies: Coding
-                        </Person>
-                        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
-                    </div> : null
-                }
-
+                { persons }
             </div>
         )
     }
