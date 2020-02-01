@@ -11,6 +11,8 @@ console.log('global', topic); // global React
 
 // The topic variable inside the if block resets the value of topic.
 
+// ========================================================================
+
 var div, container = document.getElementById('container');
 
 for (var i = 0; i < 5; i++) {
