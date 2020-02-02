@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import Person from "./components/Person/Person";
+import styled from 'styled-components';
 import './App.css';
+
+const StyleButton = styled.button`
+    background-color: #0097e6;
+    color: white;
+    font: inherit;
+    border: 1px solid;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+        
+    &:hover {
+        background-color: #3498db;
+    }
+`;
 
 class App extends Component {
     state = {
@@ -47,18 +62,7 @@ class App extends Component {
     };
 
     render() {
-        const style = {
-            backgroundColor: '#0097e6',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid',
-            padding: '8px 15px',
-            cursor: 'pointer',
-            borderRadius: '3px',
-            ':hover':  {
-                backgroundColor: '#3498db',
-            }
-        };
+        const style = {};
 
         let persons = null;
         if (this.state.showPersons) {
@@ -95,10 +99,9 @@ class App extends Component {
             <div className='App'>
                 <h1>Hi, I'm React App.</h1>
                 <p className={classes.join(' ')}>Click button to display the list of persons</p>
-                <button onClick={this.togglePersonsHandler}
-                        style={style}>
+                <StyleButton onClick={this.togglePersonsHandler}>
                     Toggle List
-                </button>
+                </StyleButton>
                 { persons }
             </div>
         )
