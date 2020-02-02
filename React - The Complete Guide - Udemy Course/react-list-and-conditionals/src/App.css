@@ -1,3 +1,12 @@
 .App {
   text-align: center;
+  color: #1abc9c;
+}
+
+.purple {
+  color: #9b59b6;
+}
+
+.bold {
+  font-weight: bold;
 }
