@@ -21265,7 +21265,7 @@ $.fn.state.settings = {
   activateTest   : function() { return true; },
   deactivateTest : function() { return true; },
 
-  // whether to automatically map default states
+  // whether to automatically Map default states
   automatic      : true,
 
   // activate / deactivate changes all elements instantiated at same time

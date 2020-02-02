@@ -26,7 +26,7 @@ module.exports = {
   // This makes the bundle appear split into separate modules in the devtools.
   // We don't use source maps here because they can be confusing:
   // https://github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
-  // You may want 'cheap-module-source-map' instead if you prefer source maps.
+  // You may want 'cheap-module-source-Map' instead if you prefer source maps.
   devtool: 'eval',
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.
