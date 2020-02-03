@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Person from "./components/Person/Person";
+import Person from "../components/Persons/Person/Person";
 import styled from 'styled-components';
 import './App.css';
 
@@ -62,8 +62,6 @@ class App extends Component {
     };
 
     render() {
-        const style = {};
-
         let persons = null;
         if (this.state.showPersons) {
             persons = (
