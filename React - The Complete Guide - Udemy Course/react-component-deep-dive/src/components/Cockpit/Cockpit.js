@@ -29,7 +29,7 @@ const Cockpit = (props) => {
 
     return (
         <div>
-            <h1>Hi, I'm React App.</h1>
+            <h1>{props.title}</h1>
             <p className={classes.join(' ')}>Click button to display the list of persons</p>
             <StyleButton alt={props.showPersons}
                          onClick={props.clicked}>
