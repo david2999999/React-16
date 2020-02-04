@@ -19,18 +19,23 @@ const StyleButton = styled.button`
 const Cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
-        // Http requests...
-    });
+
+        setTimeout(() => {
+            alert('Saved data to cloud.');
+        }, 1000);
+    }, []);
+
+    // passing in dependencies, so when the dependencies changes, useEffect
+    // will run.
+
+    // passing in [] array to useEffect, means useEffect function will only run 1 time
+    // similar to componentDidMount.
+
+    // useEffect() - can have many useEffects in a component
 
     const classes = [];
-
-    if (props.persons.length <= 2) {
-        classes.push('purple');
-    }
-
-    if (props.persons.length <= 1) {
-        classes.push('bold');
-    }
+    if (props.persons.length <= 2) classes.push('purple');
+    if (props.persons.length <= 1) classes.push('bold');
 
     return (
         <div>
