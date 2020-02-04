@@ -31,7 +31,7 @@ const Cockpit = (props) => {
         <div>
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>Click button to display the list of persons</p>
-            <StyleButton alt={props.showPersons}
+            <StyleButton alt={props.showPersons ? 1 : 0}
                          onClick={props.clicked}>
                 Toggle List
             </StyleButton>

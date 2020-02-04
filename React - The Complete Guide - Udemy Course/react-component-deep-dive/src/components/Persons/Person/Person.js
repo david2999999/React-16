@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 
 const StyleDiv = styled.div` 
@@ -14,17 +14,22 @@ const StyleDiv = styled.div`
     }
 `;
 
-const person = (props) => {
-    console.log('[Person.js] rendering....');
-    return (
-        <StyleDiv>
-            <p onClick={props.click}>
-                I'm { props.name } and I am { props.age } years old.
-            </p>
-            <p>{ props.children }</p>
-            <input type="text" onChange={props.changed} value={props.name}/>
-        </StyleDiv>
-    )
-};
+class Person extends Component {
+    render() {
+        console.log('[Person.js] rendering....');
 
-export default person;
+        return (
+            <StyleDiv>
+                <p onClick={this.props.click}>
+                    I'm { this.props.name } and I am { this.props.age } years old.
+                </p>
+                <p>{ this.props.children }</p>
+                <input type="text"
+                       onChange={this.props.changed}
+                       value={this.props.name}/>
+            </StyleDiv>
+        )
+    }
+}
+
+export default Person;
