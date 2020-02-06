@@ -23,13 +23,25 @@ const Cockpit = (props) => {
         setTimeout(() => {
             alert('Saved data to cloud.');
         }, 1000);
+
+        return () => {
+            console.log('[Cockpit.js] clean up work in useEffect');
+        }
     }, []);
+    // passing in [] array to useEffect, means useEffect function will only run 1 time
+    // similar to componentDidMount.
+
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd useEffect');
+
+        return () => {
+            console.log('[Cockpit.js] clean up work in 2nd useEffect');
+        }
+    });
+
 
     // passing in dependencies, so when the dependencies changes, useEffect
     // will run.
-
-    // passing in [] array to useEffect, means useEffect function will only run 1 time
-    // similar to componentDidMount.
 
     // useEffect() - can have many useEffects in a component
 

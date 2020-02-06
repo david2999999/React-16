@@ -32,14 +32,14 @@ deepPick("type", dan); // "person"
 deepPick("data.info.fullname.first", dan); // "Dan"
 
 // First Iteration
-    // first = "data"
-    // remaining.join(".") = "info.fullname.first"
-    // object[first] = { gender: "male", {info} }
+// first = "data"
+// remaining.join(".") = "info.fullname.first"
+// object[first] = { gender: "male", {info} }
 
 // Second Iteration
-    // first = "info"
-    // remaining.join(".") = "fullname.first"
-    // object[first] = {id: 22, {fullname}}
+// first = "info"
+// remaining.join(".") = "fullname.first"
+// object[first] = {id: 22, {fullname}}
 
 // Third Iteration
     // first = "fullname"
@@ -47,7 +47,7 @@ deepPick("data.info.fullname.first", dan); // "Dan"
     // object[first] = {first: "Dan", last: "Deacon" }
 
 // Finally...
-    // first = "first"
-    // remaining.length = 0
-    // object[first] = "Deacon"
+// first = "first"
+// remaining.length = 0
+// object[first] = "Deacon"
 
