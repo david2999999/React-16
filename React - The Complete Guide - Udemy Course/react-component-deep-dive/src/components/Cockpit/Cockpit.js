@@ -20,9 +20,9 @@ const Cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
 
-        setTimeout(() => {
-            alert('Saved data to cloud.');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('Saved data to cloud.');
+        // }, 1000);
 
         return () => {
             console.log('[Cockpit.js] clean up work in useEffect');
@@ -46,8 +46,8 @@ const Cockpit = (props) => {
     // useEffect() - can have many useEffects in a component
 
     const classes = [];
-    if (props.persons.length <= 2) classes.push('purple');
-    if (props.persons.length <= 1) classes.push('bold');
+    if (props.personsLength <= 2) classes.push('purple');
+    if (props.personsLength <= 1) classes.push('bold');
 
     return (
         <div>
@@ -61,4 +61,4 @@ const Cockpit = (props) => {
     );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
