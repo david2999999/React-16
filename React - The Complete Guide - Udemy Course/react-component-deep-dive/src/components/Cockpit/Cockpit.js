@@ -39,7 +39,6 @@ const Cockpit = (props) => {
         }
     });
 
-
     // passing in dependencies, so when the dependencies changes, useEffect
     // will run.
 
@@ -58,6 +57,7 @@ const Cockpit = (props) => {
                          ref={toggleBtnRef}>
                 Toggle List
             </StyleButton>
+            <button className='button' onClick={props.login}>Log in</button>
         </div>
     );
 };
