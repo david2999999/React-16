@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import withClass from "../../../hoc/withClass";
+import './Person.css';
 
 const StyleDiv = styled.div` 
     width: 60%;
@@ -20,18 +22,16 @@ class Person extends Component {
 
         return (
             <React.Fragment>
-                <StyleDiv>
-                    <p onClick={this.props.click}>
-                        I'm { this.props.name } and I am { this.props.age } years old.
-                    </p>
-                    <p>{ this.props.children }</p>
-                    <input type="text"
-                           onChange={this.props.changed}
-                           value={this.props.name}/>
-                </StyleDiv>
+                <p onClick={this.props.click}>
+                    I'm { this.props.name } and I am { this.props.age } years old.
+                </p>
+                <p>{ this.props.children }</p>
+                <input type="text"
+                       onChange={this.props.changed}
+                       value={this.props.name}/>
             </React.Fragment>
         )
     }
 }
 
-export default Person;
+export default withClass(Person, 'Person');
