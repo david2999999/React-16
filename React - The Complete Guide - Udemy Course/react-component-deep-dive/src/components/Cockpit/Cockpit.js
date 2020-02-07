@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import './Cockpit.css';
 
@@ -17,12 +17,12 @@ const StyleButton = styled.button`
 `;
 
 const Cockpit = (props) => {
+    const toggleBtnRef = useRef(null);
+
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
 
-        // setTimeout(() => {
-        //     alert('Saved data to cloud.');
-        // }, 1000);
+        toggleBtnRef.current.click();
 
         return () => {
             console.log('[Cockpit.js] clean up work in useEffect');
@@ -54,7 +54,8 @@ const Cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>Click button to display the list of persons</p>
             <StyleButton alt={props.showPersons ? 1 : 0}
-                         onClick={props.clicked}>
+                         onClick={props.clicked}
+                         ref={toggleBtnRef}>
                 Toggle List
             </StyleButton>
         </div>
