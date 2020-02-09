@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import styled from "styled-components";
 import './Cockpit.css';
 import AuthContext from "../../context/auth-context";
@@ -19,6 +19,7 @@ const StyleButton = styled.button`
 
 const Cockpit = (props) => {
     const toggleBtnRef = useRef(null);
+    const authContext = useContext(AuthContext);
 
     useEffect(() => {
         console.log('[Cockpit.js] useEffect');
@@ -58,9 +59,7 @@ const Cockpit = (props) => {
                          ref={toggleBtnRef}>
                 Toggle List
             </StyleButton>
-            <AuthContext.Consumer>
-                {(context) => <button className='button' onClick={context.login}>Log in</button>}
-            </AuthContext.Consumer>
+                {<button className='button' onClick={authContext.login}>Log in</button>}
         </div>
     );
 };
